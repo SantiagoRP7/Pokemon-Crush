@@ -23,6 +23,11 @@ pokemon-crush is free software: you can redistribute it and/or modify it
 class Tablero
 {
 public:
+  Tablero();
+  ~Tablero();
+  void leerNivel(string lev);
+  void showInstruc();
+  
 
 protected:
 
