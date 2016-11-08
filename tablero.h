@@ -23,6 +23,8 @@ pokemon-crush is free software: you can redistribute it and/or modify it
 #include <string>
 #include <vector>
 #include "coordenada.h"
+#include "Caja.h"
+
 
 using namespace std;
 
@@ -37,10 +39,19 @@ public:
   void cambCaja(const Coordenada *c);
   vector <const Coordenada *> verifVerti();
   vector <const Coordenada *> verifHoriz();
-  bool hayPokeball();
-  void 
-  
-  
+//  bool hayPokeball(const Coordenada *c);
+  bool CompMatch();
+ // void pokeOpen(const Coordenada *c);
+  void toWin(Caja *b);
+  //[aumentarValorLateral]
+  void liberarCaja();
+  bool validarCoor();
+  void bajarCajas();
+  void generarCajas();
+ // void letPokeball();
+ //fiveMarcthEfect();
+ //ConfirmarMovimiento();
+ void jugar();
 
 protected:
 
