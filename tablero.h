@@ -20,6 +20,12 @@ pokemon-crush is free software: you can redistribute it and/or modify it
 #ifndef _TABLERO_H_
 #define _TABLERO_H_
 
+#include <string>
+#include <vector>
+#include "coordenada.h"
+
+using namespace std;
+
 class Tablero
 {
 public:
@@ -27,6 +33,13 @@ public:
   ~Tablero();
   void leerNivel(string lev);
   void showInstruc();
+  // void showTablero();
+  void cambCaja(const Coordenada *c);
+  vector <const Coordenada *> verifVerti();
+  vector <const Coordenada *> verifHoriz();
+  bool hayPokeball();
+  void 
+  
   
 
 protected:
