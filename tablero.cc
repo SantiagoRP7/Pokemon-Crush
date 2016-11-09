@@ -36,6 +36,6 @@ void Tablero::leerNivel(string lev)
   ifstream options("Levels.txt");
   for(int i=0;i<9;i++)
   {
-    
+   
   }
 }
