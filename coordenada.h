@@ -23,10 +23,16 @@ pokemon-crush is free software: you can redistribute it and/or modify it
 class Coordenada
 {
 public:
+	Coordenada();
+	~Coordenada();
+int	getX();
+int getY();
 
 protected:
 
 private:
+int x;
+int y;
 
 };
 
