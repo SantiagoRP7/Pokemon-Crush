@@ -19,4 +19,22 @@ pokemon-crush is free software: you can redistribute it and/or modify it
 
 #include "coordenada.h"
 
+Coordenada::Coordenada()
+{
+  x=0;
+  y=0;
+}
 
+Coordenada::~Coordenada()
+{
+}
+
+int Coordenada::getX()
+{
+ return x; 
+}
+
+int Coordenada::getY()
+{
+ return y; 
+}
