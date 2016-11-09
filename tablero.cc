@@ -18,5 +18,24 @@ pokemon-crush is free software: you can redistribute it and/or modify it
  */
 
 #include "tablero.h"
+#include <iostream>
+#include <fstream>
+#include <string>
 
+Tablero::Tablero()
+{
+}
 
+Tablero::~Tablero()
+{
+}
+
+void Tablero::leerNivel(string lev)
+{
+  string info;
+  ifstream options("Levels.txt");
+  for(int i=0;i<9;i++)
+  {
+    
+  }
+}
