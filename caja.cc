@@ -19,4 +19,10 @@ pokemon-crush is free software: you can redistribute it and/or modify it
 
 #include "caja.h"
 
-
+Caja::Caja(int Valor, int Num, bool Free)
+{
+  valor=Valor;
+  num=Num;
+  canBeFree= Free;
+}
+Caja::
