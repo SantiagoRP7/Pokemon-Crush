@@ -23,11 +23,17 @@ pokemon-crush is free software: you can redistribute it and/or modify it
 class Caja
 {
 public:
+  Caja(int Num, int Valor, bool Free);
+  ~Caja();
+  int getValor();
+  int getNum();
 
 protected:
 
 private:
-
+int num;
+int valor;
+bool canBeFree;
 };
 
 #endif // _CAJA_H_
