@@ -25,8 +25,8 @@ class Coordenada
 public:
 	Coordenada();
 	~Coordenada();
-int	getX();
-int getY();
+	int getX();
+	int getY();
 
 protected:
 
