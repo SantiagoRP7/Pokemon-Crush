@@ -36,9 +36,9 @@ public:
   void leerNivel(string lev);
   void showInstruc();
   // void showTablero();
-  void cambCaja(const Coordenada *c, Direcction);
-  vector <const Coordenada *> verifVerti();
-  vector <const Coordenada *> verifHoriz();
+  void cambCaja(const Coordenada (* ), Direcction);
+  vector <const Coordenada * > verifVerti();
+  vector <const Coordenada * > verifHoriz();
 //  bool hayPokeball(const Coordenada *c);
   bool CompMatch();
  // void pokeOpen(const Coordenada *c);
