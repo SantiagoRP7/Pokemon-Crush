@@ -21,10 +21,14 @@ pokemon-crush is free software: you can redistribute it and/or modify it
 #include <iostream>
 #include <fstream>
 #include <string>
+#include "caja.h"
+#include "caja.cc"
 
 Tablero::Tablero()
 {
  Caja pokemonCrush[8][8];
+ 
+ 
  
 }
 
