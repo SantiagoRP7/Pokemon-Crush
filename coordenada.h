@@ -27,6 +27,8 @@ public:
 	~Coordenada();
 	int getX();
 	int getY();
+	void setX(int x1);
+	void setY(int y1);
 
 protected:
 
