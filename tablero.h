@@ -56,6 +56,7 @@ public:
 protected:
 
 private:
+Caja pokemonCrush[8][8];
 
 };
 
