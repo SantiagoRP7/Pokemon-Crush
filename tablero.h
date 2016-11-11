@@ -23,7 +23,7 @@ pokemon-crush is free software: you can redistribute it and/or modify it
 #include <string>
 #include <vector>
 #include "coordenada.h"
-#include "Caja.h"
+#include "caja.h"
 
 
 using namespace std;
