@@ -23,8 +23,7 @@ Caja::Caja(int Valor, int Num, bool Free)
 {
   valor=Valor;
   num=Num;
-  canBeFree= Fre
-  ;
+  canBeFree= Free;
 }
 Caja::~Caja();
 {
