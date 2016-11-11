@@ -37,3 +37,11 @@ int getNum()
 {
   return num;
 }
+void setNum(int num1)
+{
+  num=num1;
+}
+void setValor(int valor1)
+{
+  valor=valor1;
+}
