@@ -33,3 +33,14 @@ Tablero::~Tablero()
 void Tablero::leerNivel(string lev)
 {
 }
+void Tablero::showInstruc()
+{
+}
+/* void Tablero::showTablero()
+{
+}
+*/
+void Tablero::cambCaja(const Coordenada *c)
+{
+  
+}
