@@ -27,6 +27,7 @@ public:
   ~Caja();
   int getValor();
   int getNum();
+  void setNum()
 
 protected:
 
