@@ -24,7 +24,7 @@ pokemon-crush is free software: you can redistribute it and/or modify it
 
 Tablero::Tablero()
 {
-  pokemonCrush[8][8];
+ *Caja pokemonCrush[8][8];
 }
 
 Tablero::~Tablero()
