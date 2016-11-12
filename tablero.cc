@@ -23,15 +23,26 @@ pokemon-crush is free software: you can redistribute it and/or modify it
 #include <string>
 #include "caja.h"
 #include "caja.cc"
+#include "coordenada.h"
+#include <cstdlib>
 
 Tablero::Tablero()
 {
  //Caja pokemonCrush[8][8]= {};
- 
- 
+ int j= rand() % 8;
+ int k= rand() % 8;
+ for(int i=0;i<8;i++)
+ {
+ 	for(int e=0;e<8;e++)
+	{
+		pokemonCrush[i][e].setCoordenada(i, e);
+		pokemonCrush[i][e].setNum(0);
+	}
+ } 
+// pokemonCrush[j][k].setNum(5);
+ //pokemonCrush[j][k].setMove();
  
 }
-
 
 Tablero::~Tablero()
 {
@@ -47,7 +58,22 @@ void Tablero::showInstruc()
 {
 }
 */
-void Tablero::cambCaja(const Coordenada *c)
+void Tablero::cambCaja(const Coordenada caja1, const Coordenada caja2 )
 {
-  
+ 	
+}
+
+void Tablero::liberarCaja()
+{
+	for(int i=0;i<8;i++)
+	{
+		for(int j=0;j<8;j++)
+		{
+			if (pokemonCrash[i][j].getCanBeFree() == true)
+			{
+				pokemonCrash[i][j].setCanBeFree;
+				pokemonCrash[i][j].setNum(6);
+			}
+		}
+	}
 }

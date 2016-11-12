@@ -18,30 +18,57 @@ pokemon-crush is free software: you can redistribute it and/or modify it
  */
 
 #include "caja.h"
+#include "coordenada.h"
+using namespace std;
 
-Caja::Caja(int Valor, int Num, bool Free)
+Caja::Caja()
 {
-  valor=Valor;
-  num=Num;
-  canBeFree= Free;
+  valor=0;
+  num=0;
+  canBeFree= false;
+  move=true;
 }
 Caja::~Caja();
 {
 }
-int getValor()
+
+int Caja::getValor()
 {
   return valor;
 }
 
-int getNum()
+int Caja::getNum()
 {
   return num;
 }
-void setNum(int num1)
+
+void Caja::setNum(int num1)
 {
   num=num1;
 }
-void setValor(int valor1)
+
+void Caja::setValor(int valor1)
 {
   valor=valor1;
+}
+
+void Caja::setCoordenada(int x, int y)
+{
+	coor.setX(x);
+	coor.setY(y);
+}
+
+void Caja::setMove()
+{
+	move= !move;
+}
+
+void Caja::setCanBeFree()
+{
+	canBeFree = !canBeFree;
+}
+
+bool Caja::getCanBeFree()
+{
+	return canBeFree;
 }

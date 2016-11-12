@@ -1,4 +1,4 @@
-/* -*- Mode: C; indent-tabs-mode: t; c-basic-offset: 4; tab-width: 4 -*- */
+/* -*- Mode: C++; indent-tabs-mode: t; c-basic-offset: 4; tab-width: 4 -*- */
 /*
  * pokemon-crush
  * Copyright (C) SAMIR FARID VALENCIA VELASCO 2016 <samirfvv@s5pc31>
@@ -20,22 +20,30 @@ pokemon-crush is free software: you can redistribute it and/or modify it
 #ifndef _CAJA_H_
 #define _CAJA_H_
 
+#include "coordenada.h"
+
 class Caja
 {
 public:
-  Caja(int Num, int Valor, bool Free);
+  Caja();
   ~Caja();
   int getValor();
   int getNum();
   void setNum(int num1);
   void setValor(int valor1);
+  void setCoordenada(int x, int y;);
+  void setMove();
+  void setCanBeFree();
+  bool getCanBeFree();
 
 protected:
 
 private:
-int num;
+int num; // sean (0. 1. 2. 3. 4.) pokemones, 5. la pokeball y 6. el espacio vacio.
 int valor;
 bool canBeFree;
+bool move;
+Coordenada coor;// donde "coor" es la cooredenada relativa de la caja en la matriz.
 };
 
 #endif // _CAJA_H_
