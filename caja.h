@@ -31,19 +31,22 @@ public:
   int getNum();
   void setNum(int num1);
   void setValor(int valor1);
-  void setCoordenada(int x, int y;);
+  void setCoordenada(int x, int y);
   void setMove();
   void setCanBeFree();
   bool getCanBeFree();
+	/////////////////////////
+	void setRemov();
 
 protected:
 
 private:
-int num; // sean (0. 1. 2. 3. 4.) pokemones, 5. la pokeball y 6. el espacio vacio.
-int valor;
-bool canBeFree;
-bool move;
-Coordenada coor;// donde "coor" es la cooredenada relativa de la caja en la matriz.
+	bool removable;
+	int num; // sean (0. 1. 2. 3. 4.) pokemones, 5. la pokeball y 6. el espacio vacio.
+	int valor;
+	bool canBeFree;
+	bool move;
+	Coordenada coor;// donde "coor" es la cooredenada relativa de la caja en la matriz.
 };
 
 #endif // _CAJA_H_

@@ -19,6 +19,7 @@ pokemon-crush is free software: you can redistribute it and/or modify it
 
 #include "caja.h"
 #include "coordenada.h"
+#include <iostream>
 using namespace std;
 
 Caja::Caja()
@@ -28,7 +29,7 @@ Caja::Caja()
   canBeFree= false;
   move=true;
 }
-Caja::~Caja();
+Caja::~Caja()
 {
 }
 
@@ -71,4 +72,8 @@ void Caja::setCanBeFree()
 bool Caja::getCanBeFree()
 {
 	return canBeFree;
+}
+void Caja::setRemov()
+{
+		removable=true;
 }

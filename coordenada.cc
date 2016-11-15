@@ -38,11 +38,11 @@ int Coordenada::getY()
 {
  return y; 
 }
-void Coordenada::setX(int x1);
+void Coordenada::setX(int x1)
 {
   x=x1;
 }
-void Coordenada::setY(int y1);
+void Coordenada::setY(int y1)
 {
   y=y1;
 }

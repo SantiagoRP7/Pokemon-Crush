@@ -36,8 +36,8 @@ public:
   void leerNivel(string lev);
   void showInstruc();
   // void showTablero();
-  void cambCaja(const Coordenada (* ), Direcction);
-  vector <const Coordenada * > verifVerti();
+
+ //void cambCaja(const Coordenada (* ), Direcction);	vector <const Coordenada * > verifVerti();
   vector <const Coordenada * > verifHoriz();
 //  bool hayPokeball(const Coordenada *c);
   bool CompMatch();
@@ -55,7 +55,7 @@ public:
  //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
  void validMove(int f,int c, int i, int e);
  void movCaja(int f, int c, int i,int e, int dir);
- void makeRemov(int i, int e int dir);
+ void makeRemov(int i, int e, int dir);
  void retoUno();
  void quedanMov();
  
