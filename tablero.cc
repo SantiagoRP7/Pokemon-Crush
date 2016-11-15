@@ -27,15 +27,17 @@ pokemon-crush is free software: you can redistribute it and/or modify it
 
 Tablero::Tablero()
 {
+	srand (time(NULL));
  //Caja pokemonCrush[8][8]= {};
  int j= rand() % 8;
- int k= rand() % 8;
+ int k= rand() % 4;
  for(int i=0;i<8;i++)
  {
  	for(int e=0;e<8;e++)
 	{
+		 int k= rand() % 4 + 1;
 		pokemonCrush[i][e].setCoordenada(i, e);
-		pokemonCrush[i][e].setNum(0);
+		pokemonCrush[i][e].setNum(k);
 	}
  } 
 // pokemonCrush[j][k].setNum(5);
@@ -338,5 +340,47 @@ void Tablero::quedanMov()
 				cout<<"Aun hay movimientos posibles"<<endl;
 			}
           }              
+	}
+}
+//////////////////////////////////////////////////////////////////////////
+
+void Tablero::fillmatrix()
+{
+	for (int k = 0; k < 8; k++)
+	{
+	for (int i = 7; i >= 0; i--)
+	{
+		for (int j = 0; j < 8; j++)
+		{	
+			swap(i,j);
+		}
+	}
+	}
+}
+
+void Tablero::swap(int i, int j)
+{
+	if ((i==0) && (pokemonCrush[i][j].getNum()== 0))
+	{
+	}
+	else
+	{
+		if (pokemonCrush[i][j].getNum()== 0)
+		{
+			pokemonCrush[i][j].setNum(pokemonCrush[i-1][j].getNum());
+			pokemonCrush[i-1][j].setNum(0);
+		}
+	}
+}
+
+void Tablero::drawmatrix()
+{
+	for (int i = 0; i < 8; i++)
+	{
+		for (int j = 0; j < 8; j++)
+		{
+			cout << pokemonCrush[i][j].getNum() << "  ";
+		}
+		cout << endl;
 	}
 }

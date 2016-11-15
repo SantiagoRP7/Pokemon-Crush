@@ -35,29 +35,23 @@ public:
   ~Tablero();
   void leerNivel(string lev);
   void showInstruc();
-  // void showTablero();
-
- //void cambCaja(const Coordenada (* ), Direcction);	vector <const Coordenada * > verifVerti();
-  vector <const Coordenada * > verifHoriz();
-//  bool hayPokeball(const Coordenada *c);
   bool CompMatch();
- // void pokeOpen(const Coordenada *c);
   void toWin(Caja *b);
-  //[aumentarValorLateral]
   void liberarCaja();
   bool validarCoor();
   void bajarCajas();
   void generarCajas();
- // void letPokeball();
- //fiveMarcthEfect();
- //ConfirmarMovimiento();
- void jugar();
+  void jugar();
  //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
- void validMove(int f,int c, int i, int e);
- void movCaja(int f, int c, int i,int e, int dir);
- void makeRemov(int i, int e, int dir);
- void retoUno();
- void quedanMov();
+  void validMove(int f,int c, int i, int e);
+  void movCaja(int f, int c, int i,int e, int dir);
+  void makeRemov(int i, int e, int dir);
+  void retoUno();
+  void quedanMov();
+/////////////////////////////////////////
+  void fillmatrix();
+  void drawmatrix();
+  void swap(int i, int j);
  
 protected:
 
