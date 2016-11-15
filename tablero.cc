@@ -77,3 +77,232 @@ void Tablero::liberarCaja()
 		}
 	}
 }
+
+
+
+
+
+
+
+
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+void Tablero::validMove(int f,int c, int i, int e)
+{
+    int dir;
+    dir=0;
+    if (f==i)
+    {
+        switch (c)
+        {
+           case (e+1):
+           {
+              int aux1, aux2, aux3, aux4;
+              aux1=pokemonCrush[f][c].getNum();
+              aux2=pokemonCrush[i][e+1];
+              aux3=pokemonCrush[i][e+2];
+              aux4=pokemonCrush[i][e-1];
+              aux5=pokemonCrush[i][e-2];
+              switch  (aux1)
+              {
+                 case aux2:
+                 if (aux1==aux3||aux1==aux4)
+                 {
+                    dir=2;
+                 }
+                 else{}
+                 break;
+                 case aux4:
+                 if (aux1==aux2||aux1==aux5)
+                 {
+                    dir=2;
+                 }
+                 break;
+              }
+           }
+           break;
+           case (e-1):
+           {
+              int aux1, aux2, aux3, aux4;
+              aux1=pokemonCrush[f][c].getNum();
+              aux2=pokemonCrush[i][e-1];
+              aux3=pokemonCrush[i][e-2];
+              aux4=pokemonCrush[i][e+1];
+              aux5=pokemonCrush[i][e+2];
+              switch  (aux1)
+              {
+                 case aux2:
+                 if (aux1==aux3||aux1==aux4)
+                 {
+                    dir=2;
+                 }
+                 else{}
+                 break;
+                 case aux4:
+                 if (aux1==aux2||aux1==aux5)
+                 {
+                    dir=2;
+                 }
+              }
+           }
+           break;
+        }
+    }
+    else
+    {
+    if (c==e)
+    {
+        switch (f)
+        {
+           case (i+1):
+           {
+              int aux1, aux2, aux3, aux4;
+              aux1=pokemonCrush[f][c].getNum();
+              aux2=pokemonCrush[i+1][e];
+              aux3=pokemonCrush[i+2][e];
+              aux4=pokemonCrush[i-1][e];
+              aux5=pokemonCrush[i-2][e];
+              switch  (aux1)
+              {
+                 case aux2:
+                 if (aux1==aux3||aux1==aux4)
+                 {
+                    dir=1;
+                 }
+                 else{}
+                 break;
+                 case aux4:
+                 if (aux1==aux2||aux1==aux5)
+                 {
+                    dir=1;
+                 }
+                 break;
+              }
+           }
+           break;
+           case (i-1):
+           {
+              int aux1, aux2, aux3, aux4;
+              aux1=pokemonCrush[f][c].getNum();
+              aux2=pokemonCrush[i-1][e];
+              aux3=pokemonCrush[i-2][e];
+              aux4=pokemonCrush[i+1][e];
+              aux5=pokemonCrush[i+2][e];
+              switch  (aux1)
+              {
+                 case aux2:
+                 if (aux1==aux3||aux1==aux4)
+                 {
+                    dir=1;
+                 }
+                 else{}
+                 break;
+                 case aux4:
+                 if (aux1==aux2||aux1==aux5)
+                 {
+                    dir=1;
+                 }
+              }
+           }
+           break;
+        }
+    }
+    else{}
+    }
+    
+    if (dir != 0)
+    {
+    movCaja(f,c,i,e,dir);
+    }
+}
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+void Tablero::movCaja(int f, int c, int i,int e, int dir)
+{
+//Se crean dos auxiliares para guardar el numero del pokemon 
+    int aux1,aux2;
+    aux1=pokemonCrush[f][c].getNum;
+    aux2=pokemonCrush[i][e].getNum;
+//Se setea el nuevo valor en la posicion a ambas cajas
+    pokemonCrush[f][c]=aux2;
+    pokemonCrush[i][e]=aux1;
+
+    makeRemov(i,e,dir);
+}
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+void Tablero::makeRemov(int i, int e int dir)
+{
+//setea removible la posicion inicial
+    pokemonCrush[i][e].setRemov();
+    
+    int aux1;
+    auxi1=pokemonCrush[i][e].getNum();
+    
+    bool condicion, condicion2;
+    condicion=true;    
+    condicion2=true;
+    
+    switch (dir)
+    {
+        case 1:// caso misma columna
+        int auxV1;
+        //ejecuta hacia abajo 
+        for (l=(e+1);condicion;l++)
+        {
+            auxV1=pokemonCrush[i][l].getNum();
+            if (aux1==auxV1)
+            {
+                pokemonCrush[i][l].setRemov();
+            }
+            else 
+            {
+                condicion=false;
+            }
+        }
+        condicion=true;
+        //ejecuta hacia arriba
+        for (l=(e-1);condicion;l++)
+        {
+            auxV1=pokemonCrush[i][l].getNum();
+            if (aux1==auxV1)
+            {
+                pokemonCrush[i][l].setRemov();
+            }
+            else 
+            {
+                condicion=false;
+            }
+        }
+        break;
+        
+        case 2:// caso misma fila 
+        int auxH1;
+        //ejecuta hacia la derecha 
+        for (t=(i+1);condicion;t++)
+        {
+            auxV1=pokemonCrush[t][e].getNum();
+            if (aux1==auxH1)
+            {
+                pokemonCrush[t][e].setRemov();
+            }
+            else 
+            {
+                condicion=false;
+            }
+        }
+        condicion=true;
+        //ejecuta hacia la izquierda
+        for (t=(i-1);condicion;t++)
+        {
+            auxV1=pokemonCrush[t][e].getNum();
+            if (aux1==auxV1)
+            {
+                pokemonCrush[t][e].setRemov();
+            }
+            else 
+            {
+                condicion=false;
+            }
+        }
+        break;
+}
