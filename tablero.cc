@@ -58,11 +58,6 @@ void Tablero::showInstruc()
 {
 }
 */
-void Tablero::cambCaja(const Coordenada caja1, const Coordenada caja2 )
-{
- 	
-}
-
 void Tablero::liberarCaja()
 {
 	for(int i=0;i<8;i++)
@@ -305,4 +300,136 @@ void Tablero::makeRemov(int i, int e int dir)
             }
         }
         break;
+}
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+void Tablero::retoUno()
+{
+   for (i=0;i<8;i++)
+   {
+      for (j=0;j<8;j++)
+      {    
+          int aux1, aux2, aux3;
+          aux1=pokemonCrush[i][j].getNum;
+          aux2=pokemonCrush[i][j+1].getNum;
+          aux3=pokemonCrush[i][j+2].getNum;
+          if (j>=1)
+          {
+          aux4=pokemonCrush[i][j-1].getNum;
+          }
+          if (j>=2)
+          {
+          aux5=pokemonCrush[i][j-2].getNum;
+          }
+          switch (true)
+          {
+             case (aux1==aux2 && aux1==aux3):
+             makeRemov(i,j,2);
+             break;
+             case (aux1==aux4 && aux1==aux5)
+             makeRemov(i,j,2);
+             break;
+             case (aux1==aux2 && aux1==aux4)
+             makeRemov(i,j,2);
+             break;
+          }
+                
+      }
+   }
+   for (j=0;j<8;j++)
+   {
+      for (i=0;i<8;i++)
+      {    
+          int aux1, aux2, aux3;
+          aux1=pokemonCrush[i][j].getNum;
+          aux2=pokemonCrush[i+1][j].getNum;
+          aux3=pokemonCrush[i+2][j].getNum;
+          if (i>=1)
+          {
+          aux4=pokemonCrush[i-1][j].getNum;
+          }
+          if (i>=2)
+          {
+          aux5=pokemonCrush[i-2][j].getNum;
+          }
+          switch (true)
+          {
+             case (aux1==aux2 && aux1==aux3):
+             makeRemov(i,j,1);
+             break;
+             case (aux1==aux4 && aux1==aux5)
+             makeRemov(i,j,1);
+             break;
+             case (aux1==aux2 && aux1==aux4)
+             makeRemov(i,j,1);
+             break;
+          }
+                
+      }
+   }
+}
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+void Tablero::quedanMov()
+{
+   for (i=0;i<8;i++)
+   {
+      for (j=0;j<8;j++)
+      {    
+          int aux1, aux2, aux3;
+          aux1=pokemonCrush[i][j].getNum;
+          aux2=pokemonCrush[i][j+2].getNum;
+          aux3=pokemonCrush[i][j+3].getNum;
+          if (j>=2)
+          {
+          aux4=pokemonCrush[i][j-2].getNum;
+          }
+          if (j>=3)
+          {
+          aux5=pokemonCrush[i][j-3].getNum;
+          }
+          switch (true)
+          {
+             case (aux1==aux2 && aux1==aux3):
+             cout <<"Aun hay movimientos posibles"<<endl;
+             break;
+             case (aux1==aux4 && aux1==aux5)
+             cout <<"Aun hay movimientos posibles"<<endl;
+             break;
+             case (aux1==aux2 && aux1==aux4)
+             cout <<"Aun hay movimientos posibles"<<endl;
+             break;
+          }
+                
+      }
+   }
+   for (j=0;j<8;j++)
+   {
+      for (i=0;i<8;i++)
+      {    
+          int aux1, aux2, aux3;
+          aux1=pokemonCrush[i][j].getNum;
+          aux2=pokemonCrush[i+2][j].getNum;
+          aux3=pokemonCrush[i+3][j].getNum;
+          if (i>=2)
+          {
+          aux4=pokemonCrush[i-2][j].getNum;
+          }
+          if (i>=3)
+          {
+          aux5=pokemonCrush[i-3][j].getNum;
+          }
+          switch (true)
+          {
+             case (aux1==aux2 && aux1==aux3):
+             cout <<"Aun hay movimientos posibles"<<endl;
+             break;
+             case (aux1==aux4 && aux1==aux5)
+             cout <<"Aun hay movimientos posibles"<<endl;
+             break;
+             case (aux1==aux2 && aux1==aux4)
+             cout <<"Aun hay movimientos posibles"<<endl;
+             break;
+          }
+                
+      }
+   }
 }
