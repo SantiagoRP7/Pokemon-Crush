@@ -52,7 +52,13 @@ public:
  //fiveMarcthEfect();
  //ConfirmarMovimiento();
  void jugar();
-
+ //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+ void validMove(int f,int c, int i, int e);
+ void movCaja(int f, int c, int i,int e, int dir);
+ void makeRemov(int i, int e int dir);
+ void retoUno();
+ void quedanMov();
+ 
 protected:
 
 private:
