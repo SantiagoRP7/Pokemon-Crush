@@ -16,7 +16,6 @@ pokemon-crush is free software: you can redistribute it and/or modify it
  * You should have received a copy of the GNU General Public License along
  * with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-
 #include "tablero.h"
 #include <iostream>
 #include <fstream>
@@ -67,8 +66,8 @@ void Tablero::liberarCaja()
 		{
 			if (pokemonCrush[i][j].getCanBeFree() == true)
 			{
-				pokemonCrush[i][j].setCanBeFree();
-				pokemonCrush[i][j].setNum(6);
+				//pokemonCrush[i][j].setCanBeFree();
+				pokemonCrush[i][j].setNum(0);
 			}
 		}
 	}
@@ -77,43 +76,75 @@ void Tablero::liberarCaja()
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
-void Tablero::validMove (int f,int c, int i, int e)
+void Tablero::validMove (int f,int c, int i, int e)//0 1 1 1
 {
 	int dir;
 	dir=0;
-	if (f==i)
+	if (c==e)
 	{
-		int aux1, aux2, aux3, aux4, aux5;
-		aux1=pokemonCrush[f][c].getNum();
-		aux2=pokemonCrush[i][e+1].getNum();
-		aux3=pokemonCrush[i][e+2].getNum();
-		aux4=pokemonCrush[i][e-1].getNum();
-		aux5=pokemonCrush[i][e-2].getNum();
-		if((c==(e+1)) || (c==(e-1)))
+		int aux1, aux2, aux3, aux4, aux5, au2, au3, au4, au5;
+		aux1=pokemonCrush[f][c].getNum(); //0 5		2
+		aux2=pokemonCrush[i][e+1].getNum(); // 1 6		2
+		aux3=pokemonCrush[i][e+2].getNum(); // 1 7		2
+		aux4=pokemonCrush[i][e-1].getNum(); // 1 0		1
+		aux5=pokemonCrush[i][e-2].getNum(); // 1 -1		--
+		
+		au2=pokemonCrush[i+1][e].getNum(); //  2 1		2
+		au3=pokemonCrush[i+2][e].getNum(); //  3 1		3
+		au4=pokemonCrush[i-1][e].getNum(); //  0 1		1
+		au5=pokemonCrush[i-2][e].getNum(); //  -1 1	--
+
+		if((f==(i+1)) || (f==(i-1)))
 		{
-			if(((aux1==aux2)&&(aux1==aux3))||((aux1==aux4)&&(aux1==aux5)))
+			if(((aux1==aux2)&&(aux1==aux3))||((aux1==aux4)&&(aux1==aux5))||((aux1==aux2)&&(aux1==aux4)))
 			{
 				dir=1;
 			}
-				
-		}
-	}
-	if (c==e)
-	{
-		int aux1, aux2, aux3, aux4, aux5;
-		aux1=pokemonCrush[f][c].getNum();
-		aux2=pokemonCrush[i+1][e].getNum();
-		aux3=pokemonCrush[i+2][e].getNum();
-		aux4=pokemonCrush[i-1][e].getNum();
-		aux5=pokemonCrush[i-2][e].getNum();
-		if((c==(e+1)) || (c==(e-1)))
-		{
-			if(((aux1==aux2)&&(aux1==aux3))||((aux1==aux4)&&(aux1==aux5)))
+			if (((aux1==au2)&&(aux1==au3))||((aux1==au4)&&(aux1==au5))||((aux1==au2)&&(aux1==au4)))
 			{
 				dir=2;
 			}
-				
 		}
+	}
+	
+	if (f==i)
+	{
+		int aux1, aux2, aux3, aux4, aux5, au2, au3, au4, au5; //	0 1	  1 1 
+		aux1=pokemonCrush[f][c].getNum(); //	0 1		1	   1 0	  1 2
+		aux2=pokemonCrush[i+1][e].getNum(); //  2 1		2
+		aux3=pokemonCrush[i+2][e].getNum(); //  3 1		3
+		aux4=pokemonCrush[i-1][e].getNum(); //  0 1		1
+		aux5=pokemonCrush[i-2][e].getNum(); //  -1 1	--
+
+		au2=pokemonCrush[i][e+1].getNum(); // 1 2		1
+		au3=pokemonCrush[i][e+2].getNum(); // 1 3		2
+		au4=pokemonCrush[i][e-1].getNum(); // 1 0		1
+		au5=pokemonCrush[i][e-2].getNum(); // 1 -1		--
+		
+		if((c==(e+1)) || (c==(e-1)))
+		{			
+			if(((aux1==aux2)&&(aux1==aux3))||((aux1==aux4)&&(aux1==aux5))||((aux1==aux2)&&(aux1==aux4)))
+			{
+				dir=2;
+			}
+			if (((aux1==au2)&&(aux1==au3))||((aux1==au4)&&(aux1==au5))||((aux1==au2)&&(aux1==au4)))
+			{
+				dir=1;
+			}
+		}
+	}
+	switch (dir)
+	{
+		case 1:
+		{
+		movCaja(f,c,i,e, 1);
+		}
+		break;
+		case 2:
+		{
+		movCaja(f,c,i,e, 2);
+		}
+		break;
 	}
 }
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -135,7 +166,7 @@ void Tablero::movCaja(int f, int c, int i,int e, int dir)
 void Tablero::makeRemov(int i, int e, int dir)
 {
 //setea removible la posicion inicial
-    pokemonCrush[i][e].setRemov();
+    pokemonCrush[i][e].setCanBeFree();
     
     int aux1;
     aux1=pokemonCrush[i][e].getNum();
@@ -149,30 +180,30 @@ void Tablero::makeRemov(int i, int e, int dir)
         case 1:// caso misma columna
         int auxV1;
         //ejecuta hacia abajo 
-        for (int l=(e+1);condicion;l++)
+        for (int l=(e+1);l<777;l++)
         {
             auxV1=pokemonCrush[i][l].getNum();
             if (aux1==auxV1)
             {
-                pokemonCrush[i][l].setRemov();
+                pokemonCrush[i][l].setCanBeFree();
             }
             else 
             {
-                condicion=false;
+                l=778;
             }
         }
         condicion=true;
         //ejecuta hacia arriba
-        for (int l=(e-1);condicion;l++)
+        for (int l=(e-1);l<777;l++)
         {
             auxV1=pokemonCrush[i][l].getNum();
             if (aux1==auxV1)
             {
-                pokemonCrush[i][l].setRemov();
+                pokemonCrush[i][l].setCanBeFree();
             }
             else 
             {
-                condicion=false;
+                l=778;
             }
         }
         break;
@@ -180,30 +211,30 @@ void Tablero::makeRemov(int i, int e, int dir)
         case 2:// caso misma fila 
         int auxH1;
         //ejecuta hacia la derecha 
-        for (int t=(i+1);condicion;t++)
+        for (int t=(i+1);t<777;t++)
         {
             auxV1=pokemonCrush[t][e].getNum();
             if (aux1==auxH1)
             {
-                pokemonCrush[t][e].setRemov();
+                pokemonCrush[t][e].setCanBeFree();
             }
             else 
             {
-                condicion=false;
+                t=778;
             }
         }
         condicion=true;
         //ejecuta hacia la izquierda
-        for (int t=(i-1);condicion;t++)
+        for (int t=(i-1);t<777;t++)
         {
             auxV1=pokemonCrush[t][e].getNum();
             if (aux1==auxV1)
             {
-                pokemonCrush[t][e].setRemov();
+                pokemonCrush[t][e].setCanBeFree();
             }
             else 
             {
-                condicion=false;
+                t=778;
             }
         }
         break;
@@ -229,20 +260,11 @@ void Tablero::retoUno()
           {
           aux5=pokemonCrush[i][j-2].getNum();
           }
-          if (aux1==aux2 && aux1==aux3)
+          if ((aux1==aux2 && aux1==aux3)||(aux1==aux4 && aux1==aux5)||(aux1==aux2 && aux1==aux4))
 		  {
 			  makeRemov(i,j,2);
 		  }
-          if(aux1==aux4 && aux1==aux5)
-		  {
-             makeRemov(i,j,2);
-		  }
-          if (aux1==aux2 && aux1==aux4)
-		  {
-			  makeRemov(i,j,2);
-		  }
-                
-      }
+	  }
    }
    for (int j=0;j<8;j++)
    {
@@ -260,22 +282,12 @@ void Tablero::retoUno()
           {
           aux5=pokemonCrush[i-2][j].getNum();
           }
-		  if (aux1==aux2 && aux1==aux3)
+		  if ((aux1==aux2 && aux1==aux3)||(aux1==aux4 && aux1==aux5)||(aux1==aux2 && aux1==aux4))
 		  {
 			  makeRemov(i,j,1);
 		  }
-          if (aux1==aux4 && aux1==aux5)
-		  {
-			  makeRemov(i,j,1);
-		  }
-          if (aux1==aux2 && aux1==aux4)
-		  {
-			  makeRemov(i,j,1);
-		  }
-          
-          }
-                
-      }
+	  }
+   }
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
