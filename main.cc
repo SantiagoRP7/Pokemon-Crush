@@ -45,7 +45,7 @@ int main()
 		switch(op)
 		{
 			case 1:
-				matrix1.retoUno();
+				//matrix1.retoUno();
 				matrix1.liberarCaja();
 				matrix1.drawmatrix();
 				cout << "x: ";
@@ -56,7 +56,7 @@ int main()
 				break;
 			
 			case 2:
-				matrix1.retoUno();
+				//matrix1.retoUno();
 				matrix1.liberarCaja();
 				matrix1.drawmatrix();
 				cout << "x: ";

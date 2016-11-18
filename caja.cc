@@ -66,7 +66,7 @@ void Caja::setMove()
 
 void Caja::setCanBeFree()
 {
-	canBeFree = !canBeFree;
+	canBeFree = true;
 }
 
 bool Caja::getCanBeFree()
