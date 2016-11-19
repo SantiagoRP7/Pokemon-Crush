@@ -35,8 +35,13 @@ Tablero::Tablero()
  	for(int e=0;e<8;e++)
 	{
 		 int k= rand() % 4 + 1;
+		int aux1;
+		aux1=pokemonCrush[i][e].getNum();
+		if(aux1==0)
+		{
 		pokemonCrush[i][e].setCoordenada(i, e);
 		pokemonCrush[i][e].setNum(k);
+		}
 	}
  } 
 // pokemonCrush[j][k].setNum(5);
@@ -249,8 +254,9 @@ void Tablero::makeRemov(int i, int e, int dir, int prov)
 		}
 }
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-void Tablero::retoUno()
+bool Tablero::retoUno()
 {
+	bool would= false;
    for (int i=0;i<8;i++)
    {
       for (int j=0;j<8;j++)
@@ -263,10 +269,12 @@ void Tablero::retoUno()
           aux5=pokemonCrush[i][j-2].getNum();
           if ((aux1==aux2 && aux1==aux3)||(aux1==aux4 && aux1==aux5)||(aux1==aux2 && aux1==aux4))
 		  {
-			  cout<<"2Make remove "<<i<<j<<endl;
+			  //cout<<"2Make remove "<<i<<j<<endl;
 			  makeRemov(i,j,2,0);
+			  would=true;
 		  }
 	  }
+	   liberarCaja ();	   
    }
    for (int j=0;j<8;j++)
    {
@@ -280,11 +288,15 @@ void Tablero::retoUno()
           aux5=pokemonCrush[i-2][j].getNum();
           if ((aux1==aux2 && aux1==aux3)||(aux1==aux4 && aux1==aux5)||(aux1==aux2 && aux1==aux4))
 		  {
-			  cout<<"1Make remove "<<i<<j<<endl;
+			//  cout<<"1Make remove "<<i<<j<<endl;
 			  makeRemov(i,j,1,0);
+			  would=true;
 		  }
 	  }
+	   liberarCaja ();
    } 
+	swap(0,0);
+	return would;
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

@@ -25,12 +25,22 @@ using namespace std;
 int main()
 {	int x,y,x1,y1,op;
 	int t = 0;
+	int veces =0;
 	Tablero matrix1;
 	matrix1.drawmatrix();
 	cout << "----------------\n";
+	while (matrix1.retoUno())
+	{
+	matrix1.retoUno();
+	matrix1.liberarCaja();
+	matrix1.fillmatrix();
+	veces=veces+1;
+	break;
+	}
 	matrix1.retoUno();
 	matrix1.liberarCaja();
 	matrix1.drawmatrix();
+	
 	
 	cout << "----------------\n";
 
@@ -45,7 +55,6 @@ int main()
 		switch(op)
 		{
 			case 1:
-				//matrix1.retoUno();
 				matrix1.liberarCaja();
 				matrix1.drawmatrix();
 				cout << "x: ";
@@ -56,7 +65,6 @@ int main()
 				break;
 			
 			case 2:
-				//matrix1.retoUno();
 				matrix1.liberarCaja();
 				matrix1.drawmatrix();
 				cout << "x: ";
