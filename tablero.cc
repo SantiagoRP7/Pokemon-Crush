@@ -26,21 +26,21 @@ pokemon-crush is free software: you can redistribute it and/or modify it
 
 Tablero::Tablero()
 {
-	srand (time(NULL));
- //Caja pokemonCrush[8][8]= {};
+ srand (time(NULL));
  int j= rand() % 8;
  int k= rand() % 4;
  for(int i=0;i<8;i++)
  {
  	for(int e=0;e<8;e++)
 	{
-		 int k= rand() % 4 + 1;
+		int k= rand() % 4 + 1;
 		int aux1;
 		aux1=pokemonCrush[i][e].getNum();
 		if(aux1==0)
 		{
-		pokemonCrush[i][e].setCoordenada(i, e);
-		pokemonCrush[i][e].setNum(k);
+			pokemonCrush[i][e].setCoordenada(i, e);
+			pokemonCrush[i][e].setNum(k);
+			pokemonCrush[i][e].setCantBeFree();
 		}
 	}
  } 
@@ -73,6 +73,7 @@ void Tablero::liberarCaja()
 			{
 				//pokemonCrush[i][j].setCanBeFree();
 				pokemonCrush[i][j].setNum(0);
+				pokemonCrush[i][j].setCantBeFree();
 			}
 		}
 	}
@@ -274,7 +275,7 @@ bool Tablero::retoUno()
 			  would=true;
 		  }
 	  }
-	   liberarCaja ();	   
+	  // liberarCaja ();	   
    }
    for (int j=0;j<8;j++)
    {
@@ -293,9 +294,9 @@ bool Tablero::retoUno()
 			  would=true;
 		  }
 	  }
-	   liberarCaja ();
+	 //  liberarCaja ();
    } 
-	swap(0,0);
+	//swap(0,0);
 	return would;
 }
 
@@ -367,6 +368,7 @@ void Tablero::quedanMov()
 
 void Tablero::fillmatrix()
 {
+	//////////////////////////////////////////////////////////////////////////
 	for (int k = 0; k < 8; k++)
 	{
 	for (int i = 7; i >= 0; i--)
@@ -377,6 +379,21 @@ void Tablero::fillmatrix()
 		}
 	}
 	}
+	
+	srand (time(NULL));
+	for(int i=0;i<8;i++)
+	 {
+	 	for(int e=0;e<8;e++)
+		{
+			int k= rand() % 4 + 1;
+			int aux1;
+			aux1=pokemonCrush[i][e].getNum();
+			if(aux1==0)
+			{
+				pokemonCrush[i][e].setNum(k);
+			}
+		}
+	 } 
 }
 
 void Tablero::swap(int i, int j)

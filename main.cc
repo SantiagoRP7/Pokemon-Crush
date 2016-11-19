@@ -31,12 +31,12 @@ int main()
 	cout << "----------------\n";
 	while (matrix1.retoUno())
 	{
-	matrix1.retoUno();
-	matrix1.liberarCaja();
-	matrix1.fillmatrix();
-	veces=veces+1;
-	break;
+		veces=veces+1;
+		matrix1.liberarCaja();
+		matrix1.fillmatrix();
 	}
+	cout <<"Se ejecuto: "<< veces << " veces por matches iniciales"<<endl;
+	veces=0;
 	matrix1.retoUno();
 	matrix1.liberarCaja();
 	matrix1.drawmatrix();
@@ -55,6 +55,7 @@ int main()
 		switch(op)
 		{
 			case 1:
+				/*
 				matrix1.liberarCaja();
 				matrix1.drawmatrix();
 				cout << "x: ";
@@ -62,11 +63,11 @@ int main()
 				cout << "y: ";
 				cin >> y;
 				//cout << "Pos requerida: "<<matrix1.getnumpos(x,y)<<endl;
+				*/
 				break;
 			
 			case 2:
 				matrix1.liberarCaja();
-				matrix1.drawmatrix();
 				cout << "x: ";
 				cin >> x;
 				cout << "y: ";
@@ -76,12 +77,22 @@ int main()
 				cout << "y1: ";
 				cin >> y1;
 				matrix1.validMove(x,y,x1,y1);
+				while (matrix1.retoUno())
+					{
+						veces=veces+1;
+						matrix1.liberarCaja();
+						matrix1.fillmatrix();
+					}
+				cout <<"Se ejecuto: "<< veces << " veces por matches al mover"<<endl;
+				veces=0;
+				matrix1.drawmatrix();
 				break;
 			
 			case 3:
+				matrix1.fillmatrix();
 				matrix1.liberarCaja();
 				matrix1.drawmatrix();
-				matrix1.fillmatrix();
+								
 				cout << "----------------\n";
 				matrix1.drawmatrix();
 				break;
