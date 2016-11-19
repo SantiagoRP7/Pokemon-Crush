@@ -46,7 +46,7 @@ public:
   void validMove(int f,int c, int i, int e);
   void movCaja(int f, int c, int i,int e, int dir);
   void makeRemov(int i, int e, int dir, int prov);
-  void retoUno();
+  bool retoUno();
   void quedanMov();
 /////////////////////////////////////////
   void fillmatrix();

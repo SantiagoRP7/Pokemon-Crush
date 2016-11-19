@@ -34,6 +34,7 @@ public:
   void setCoordenada(int x, int y);
   void setMove();
   void setCanBeFree();
+  void setCantBeFree();
   bool getCanBeFree();
 	/////////////////////////
 	void setRemov();
