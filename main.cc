@@ -25,15 +25,35 @@ using namespace std;
 int main()
 {	int x,y,x1,y1,op;
 	int t = 0;
+	int veces =0;
 	Tablero matrix1;
 	matrix1.drawmatrix();
 	cout << "----------------\n";
-	matrix1.retoUno();
-	matrix1.liberarCaja();
-	matrix1.drawmatrix();
+
+	bool mIni;
+	mIni=true;
+	while (mIni)
+	{
+		mIni=false;
+		for(int i=0; i<=7;i++)
+		{
+			for(int j=0; j<=7;j++)
+			{
+				if (matrix1.retoUno (i,j))
+				{
+					matrix1.liberarCaja();
+					matrix1.fillmatrix();
+					veces++;
+					mIni=true;
+				}
+				matrix1.inicialMatrix();
+			}
+		}
+	}
+	veces=0;
 	
 	cout << "----------------\n";
-
+	matrix1.drawmatrix();
 	while(op != -1)
 	{
 		cout << "1 - Consulta \n";
@@ -45,7 +65,7 @@ int main()
 		switch(op)
 		{
 			case 1:
-				//matrix1.retoUno();
+				/*
 				matrix1.liberarCaja();
 				matrix1.drawmatrix();
 				cout << "x: ";
@@ -53,12 +73,11 @@ int main()
 				cout << "y: ";
 				cin >> y;
 				//cout << "Pos requerida: "<<matrix1.getnumpos(x,y)<<endl;
-				break;
+
+			*/	break;
 			
 			case 2:
-				//matrix1.retoUno();
-				matrix1.liberarCaja();
-				matrix1.drawmatrix();
+				//matrix1.liberarCaja();
 				cout << "x: ";
 				cin >> x;
 				cout << "y: ";
@@ -68,12 +87,19 @@ int main()
 				cout << "y1: ";
 				cin >> y1;
 				matrix1.validMove(x,y,x1,y1);
+				matrix1.liberarCaja();
+				matrix1.inicialMatrix();
+				matrix1.drawmatrix();
+				matrix1.fillmatrix();
+				matrix1.inicialMatrix();
+				matrix1.drawmatrix();
 				break;
 			
 			case 3:
+				matrix1.fillmatrix();
 				matrix1.liberarCaja();
 				matrix1.drawmatrix();
-				matrix1.fillmatrix();
+								
 				cout << "----------------\n";
 				matrix1.drawmatrix();
 				break;

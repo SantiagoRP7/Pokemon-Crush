@@ -69,6 +69,11 @@ void Caja::setCanBeFree()
 	canBeFree = true;
 }
 
+void Caja::setCantBeFree()
+{
+	canBeFree = false;
+}
+
 bool Caja::getCanBeFree()
 {
 	return canBeFree;

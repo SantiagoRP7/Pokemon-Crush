@@ -46,12 +46,13 @@ public:
   void validMove(int f,int c, int i, int e);
   void movCaja(int f, int c, int i,int e, int dir);
   void makeRemov(int i, int e, int dir, int prov);
-  void retoUno();
+  bool retoUno(int i, int e);
   void quedanMov();
 /////////////////////////////////////////
   void fillmatrix();
   void drawmatrix();
   void swap(int i, int j);
+  bool inicialMatrix();
  
 protected:
 
