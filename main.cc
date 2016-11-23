@@ -88,10 +88,10 @@ int main()
 				cin >> y1;
 				matrix1.validMove(x,y,x1,y1);
 				matrix1.liberarCaja();
-				matrix1.inicialMatrix();
+				//matrix1.inicialMatrix();
 				matrix1.drawmatrix();
 				matrix1.fillmatrix();
-				matrix1.inicialMatrix();
+				//matrix1.inicialMatrix();
 				matrix1.drawmatrix();
 				break;
 			

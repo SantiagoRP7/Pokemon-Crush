@@ -158,7 +158,7 @@ bool Tablero::retoUno(int f, int c)
 	{
 		for (l;l<777;l++)
 		{
-			if (l<=8)
+			if (l<=7)
 			{
 				int matchType;
 				auxV1=pokemonCrush[f][l].getNum();
@@ -243,7 +243,7 @@ bool Tablero::retoUno(int f, int c)
 	auxV2=pokemonCrush[f-2][c].getNum();
 	auxH1=pokemonCrush[f+1][c].getNum();
 	if(((aux1==auxV1)&&(aux1==auxV2))||((aux1==auxV1)&&(aux1==auxH1)))
-	for (l;l>-1;l--)
+	for (l;l>=0;l--)
 	{
 		auxH1=pokemonCrush[l][c].getNum();
 		if (l<=7)
