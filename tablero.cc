@@ -81,32 +81,63 @@ void Tablero::liberarCaja()
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-
 void Tablero::validMove (int f,int c, int i, int e)//0 1 1 1
 {
 	int dir;
 	dir=0;
 	int aux1, aux2, aux3, aux4, aux5, au2, au3, au4, au5;
-		aux1=pokemonCrush[f][c].getNum(); // 		
-		aux2=pokemonCrush[i][e+1].getNum(); //  		
-		aux3=pokemonCrush[i][e+2].getNum(); //  		2
-		aux4=pokemonCrush[i][e-1].getNum(); //  		1
-		aux5=pokemonCrush[i][e-2].getNum(); //  		--
-		
-		au2=pokemonCrush[i+1][e].getNum(); //  2 1		2
-		au3=pokemonCrush[i+2][e].getNum(); //  3 1		3
-		au4=pokemonCrush[i-1][e].getNum(); //  0 1		1
-		au5=pokemonCrush[i-2][e].getNum(); //  -1 1	--
+		aux1=pokemonCrush[f][c].getNum(); //
+	if(e<7)
+	{
+		aux2=pokemonCrush[i][e+1].getNum();
+		if(e<6)
+		{
+			aux3=pokemonCrush[i][e+2].getNum();
+		}
+	}  		
+
+	if(e>0)
+	{
+		aux4=pokemonCrush[i][e-1].getNum();
+		if(e>1)
+		{
+			aux5=pokemonCrush[i][e-2].getNum();
+		}
+	}  		
+		 
+	if(i<7)
+	{
+		au2=pokemonCrush[i+1][e].getNum();
+		if(i<6)
+		{
+			au3=pokemonCrush[i+2][e].getNum();
+		}
+	}
+	
+	if(i>0)
+	{
+		au4=pokemonCrush[i-1][e].getNum();
+		if(i>1)
+		{
+			au5=pokemonCrush[i-2][e].getNum();
+		}
+	}
+		 //  2 1		2
+		 //  3 1		3
+		 //  0 1		1
+		 //  -1 1	--
+	
 	if (((aux1==aux2)&&(aux1==aux3))||((aux1==aux4)&&(aux1==aux5))||((aux1==aux2)&&(aux1==aux4)))
 	{
 		//Mover caja horizontal
-		movCaja(f,c,i,e, 2);
+		movCaja(f,c,i,e);
+		
 	}
 	
 	if (((aux1==au2)&&(aux1==au3))||((aux1==au4)&&(aux1==au5))||((aux1==au2)&&(aux1==au4)))
 	{
 		//Move caja vertical
-		movCaja(f,c,i,e, 1);
+		movCaja(f,c,i,e);
 	}
 }
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
