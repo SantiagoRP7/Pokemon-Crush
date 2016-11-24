@@ -28,9 +28,20 @@ int main()
 	int t = 0;
 	int veces =0;
 	Tablero matrix1;
-
+	int cantidad1,cantidad2,cantidad3,cantidad4,cantidad5;
+	int tipo1,tipo2,tipo3,tipo4,tipo5;
 	bool mIni;
 	mIni=true;
+	cantidad1=0;
+	cantidad2=0;
+	cantidad3=0;
+	cantidad4=0;
+	cantidad5=0;
+	tipo1=1;
+	tipo2=2;
+	tipo3=3;
+	tipo4=4;
+	tipo5=5;
 	
 	while(op2 != -1)
 	{
@@ -79,6 +90,11 @@ int main()
 			}
 			cout <<"Se ejecuto "<< veces<<" veces por matches"<< endl;
 			veces=0;
+			cout << "Necesitas "<< cantidad1<<" pokemon de tipo " <<tipo1 << endl;
+			cout << "Necesitas "<< cantidad2<<" pokemon de tipo " <<tipo2 << endl;
+			cout << "Necesitas "<< cantidad3<<" pokemon de tipo " <<tipo3 << endl;
+			cout << "Necesitas "<< cantidad4<<" pokemon de tipo " <<tipo4 << endl;
+			cout << "Necesitas "<< cantidad5<<" pokemon de tipo " <<tipo5 << endl;
 			//matrix1.drawmatrix();
 			cout << "Digite la opcion: \n";
 			cout << "1 - Cambiar numero \n";
