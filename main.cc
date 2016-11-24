@@ -23,7 +23,8 @@ using namespace std;
 #include "tablero.h"
 
 int main()
-{	int x,y,x1,y1,op;
+{	
+	int x,y,x1,y1,op;
 	int t = 0;
 	int veces =0;
 	Tablero matrix1;
@@ -32,7 +33,7 @@ int main()
 
 	bool mIni;
 	mIni=true;
-	while (mIni)
+	/*while (mIni)
 	{
 		mIni=false;
 		for(int i=0; i<=7;i++)
@@ -41,21 +42,48 @@ int main()
 			{
 				if (matrix1.retoUno (i,j))
 				{
-					matrix1.liberarCaja();
+					//matrix1.liberarCaja();
 					matrix1.fillmatrix();
 					veces++;
 					mIni=true;
 				}
-				matrix1.inicialMatrix();
+				matrix1.fillmatrix();
 			}
 		}
 	}
+	cout <<"Se ejecuto "<< veces<<"veces por matches"<< endl;
 	veces=0;
-	
+	*/
 	cout << "----------------\n";
 	matrix1.drawmatrix();
 	while(op != -1)
 	{
+		mIni=true;
+		while (mIni)
+		{
+			mIni=false;
+			for(int i=0; i<=7;i++)
+			{
+				for(int j=0; j<=7;j++)
+				{
+					if (matrix1.retoUno (i,j))
+					{
+						//matrix1.liberarCaja();
+						matrix1.fillmatrix();
+					
+						mIni=true;
+					}
+					
+					matrix1.fillmatrix();
+					//matrix1.drawmatrix();
+				}
+			}
+				veces++;
+		}
+		cout <<"Se ejecuto "<< veces<<"veces por matches"<< endl;
+		veces=0;
+		//matrix1.drawmatrix();
+		
 		cout << "1 - Consulta \n";
 		cout << "2 - Cambiar numero \n";
 		cout << "3 - rellenar \n";
@@ -65,19 +93,9 @@ int main()
 		switch(op)
 		{
 			case 1:
-				/*
-				matrix1.liberarCaja();
-				matrix1.drawmatrix();
-				cout << "x: ";
-				cin >> x;
-				cout << "y: ";
-				cin >> y;
-				//cout << "Pos requerida: "<<matrix1.getnumpos(x,y)<<endl;
-
-			*/	break;
+					break;
 			
 			case 2:
-				//matrix1.liberarCaja();
 				cout << "x: ";
 				cin >> x;
 				cout << "y: ";
@@ -87,12 +105,13 @@ int main()
 				cout << "y1: ";
 				cin >> y1;
 				matrix1.validMove(x,y,x1,y1);
-				matrix1.liberarCaja();
-				//matrix1.inicialMatrix();
 				matrix1.drawmatrix();
 				matrix1.fillmatrix();
-				//matrix1.inicialMatrix();
 				matrix1.drawmatrix();
+				/*matrix1.liberarCaja();
+				matrix1.drawmatrix();
+				matrix1.fillmatrix();
+				matrix1.drawmatrix();*/
 				break;
 			
 			case 3:

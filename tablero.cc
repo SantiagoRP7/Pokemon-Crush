@@ -147,121 +147,168 @@ bool Tablero::inicialMatrix()
 bool Tablero::retoUno(int f, int c)
 {
 	bool would = false;
-	int l, auxV1,auxV2, auxH1,auxH2, aux1;
-	l=c+1;
-	aux1=pokemonCrush[f][c].getNum();
-	pokemonCrush[f][c].setCanBeFree();
-	auxH1=pokemonCrush[f][c+1].getNum();
-	auxH2=pokemonCrush[f][c+2].getNum();		
-	auxV1=pokemonCrush[f][c-1].getNum();
-	if(((aux1==auxH1)&&(aux1==auxH2))||((aux1==auxH1)&&(aux1==auxV1)))
+	int pokePrincipal=pokemonCrush[f][c].getNum();
+	int masAuxHoriz1=0;
+	int masAuxHoriz2=0;
+	int menosAuxHoriz1=0;
+	int menosAuxHoriz2=0;
+	int l;
+	if (c<7)
 	{
-		for (l;l<777;l++)
+		masAuxHoriz1=pokemonCrush[f][c+1].getNum();
+		if (c<6)
 		{
-			if (l<=7)
+			masAuxHoriz2=pokemonCrush[f][c+2].getNum();
+		}
+			
+	}
+	if(c>0)
+	{
+		menosAuxHoriz1=pokemonCrush[f][c-1].getNum();
+		if(c>1)
+		{
+			menosAuxHoriz2=pokemonCrush[f][c-2].getNum();
+		}
+	}
+	
+
+	if((pokePrincipal==masAuxHoriz1)&&(pokePrincipal==masAuxHoriz2))
+	{
+		would = true;
+		pokemonCrush[f][c].setNum(0);
+		pokemonCrush[f][c+1].setNum(0);
+		pokemonCrush[f][c+2].setNum(0);
+		if(c<=5)
+		{
+			l=c+3;
+			for(l;l<=7;l++)
 			{
-				int matchType;
-				auxV1=pokemonCrush[f][l].getNum();
-				if (aux1==auxV1)
-				{   
-					matchType++;
-					//cout << "Removible "<<matchType<< endl;
-					pokemonCrush[f][l].setCanBeFree();	
-					would=true;
+				if(pokemonCrush[f][l].getNum() == pokePrincipal)
+				{
+					pokemonCrush[f][l].setNum(0);
 				}
 				else 
 				{
-					l=5778;
+					l=8;
 				}
+			
 			}
 		}
 	}
-
-		
-	l=c-1;	
-	auxH1=pokemonCrush[f][c-1].getNum();
-	auxH2=pokemonCrush[f][c-2].getNum();
-	auxV1=pokemonCrush[f][c+1].getNum();
-	if(((aux1==auxH1)&&(aux1==auxH2))||((aux1==auxH1)&&(aux1==auxV1)))
+	if((pokePrincipal==menosAuxHoriz1)&&(pokePrincipal==menosAuxHoriz2))
 	{
-	for (l;l>=0;l--)
-	{
-		auxV1=pokemonCrush[f][l].getNum();
-		if (l<=7)
+		would = true;
+		pokemonCrush[f][c].setNum(0);
+		pokemonCrush[f][c-1].setNum(0);
+		pokemonCrush[f][c-2].setNum(0);
+		if(c>=3)
 		{
-			if (aux1==auxV1)
+			l=c-3;
+			for(l;l>=0;l--)
 			{
-				int matchType;
-				matchType++;
-				//cout << "Removible "<<matchType<< endl;
-				pokemonCrush[f][l].setCanBeFree();
-				would=true;
-			}
-			else 
-			{
-				l=-7758;
+				if(pokemonCrush[f][l].getNum() == pokePrincipal)
+				{
+					pokemonCrush[f][l].setNum(0);
+				}
+				else 
+				{
+					l=-1;
+				}
+			
 			}
 		}
 	}
-	}
 
 
 
-	l=f+1;
-	aux1= pokemonCrush[f][c].getNum();
-	pokemonCrush[f][c].setCanBeFree();
-	auxV1=pokemonCrush[f+1][c].getNum();
-	auxV2=pokemonCrush[f+2][c].getNum();
-	auxH1=pokemonCrush[f-1][c].getNum();
-	if(((aux1==auxV1)&&(aux1==auxV2))||((aux1==auxV1)&&(aux1==auxH1)))
+
+	int masAuxVerti1=0;
+	int masAuxVerti2=0;
+	int menosAuxVerti1=0;
+	int menosAuxVerti2=0;
+	
+	if (f<7)
 	{
-	for (l;l<777;l++)
-	{
-
-		if (l<=7)
+		masAuxVerti1=pokemonCrush[f+1][c].getNum();
+		if (f<6)
 		{
-			int matchType;
-			auxH1=pokemonCrush[l][c].getNum();
-			if (aux1==auxV1)
-			{   
-				matchType++;
-				//cout << "Removible "<<matchType<< endl;
-				pokemonCrush[l][c].setCanBeFree();
-				would=true;
-			}
-			else 
+			masAuxVerti2=pokemonCrush[f+2][c].getNum();
+		}
+			
+	}
+	if(f>0)
+	{
+		menosAuxVerti1=pokemonCrush[f-1][c].getNum();
+		if(f>1)
+		{
+			menosAuxVerti2=pokemonCrush[f-2][c].getNum();
+		}
+	}
+	
+
+	if((pokePrincipal==masAuxVerti1)&&(pokePrincipal==masAuxVerti2))
+	{
+		would = true;
+		pokemonCrush[f][c].setNum(0);
+		pokemonCrush[f+1][c].setNum(0);
+		pokemonCrush[f+2][c].setNum(0);
+		if(f<=5)
+		{
+			l=f+3;
+			for(l;l<=7;l++)
 			{
-				l=7758;
+				if(pokemonCrush[l][c].getNum() == pokePrincipal)
+				{
+					pokemonCrush[l][c].setNum(0);
+				}
+				else 
+				{
+					l=8;
+				}
+			
 			}
 		}
 	}
+	if((pokePrincipal==menosAuxVerti1)&&(pokePrincipal==menosAuxVerti2))
+	{
+		would = true;
+		pokemonCrush[f][c].setNum(0);
+		pokemonCrush[f-1][c].setNum(0);
+		pokemonCrush[f-2][c].setNum(0);
+		if(f>=3)
+		{
+			l=f-3;
+			for(l;l>=0;l--)
+			{
+				if(pokemonCrush[l][c].getNum() == pokePrincipal)
+				{
+					pokemonCrush[l][c].setNum(0);
+				}
+				else 
+				{
+					l=-1;
+				}
+			
+			}
+		}
 	}
 
-		
-	l=f-1;		
-	auxV1=pokemonCrush[f-1][c].getNum();
-	auxV2=pokemonCrush[f-2][c].getNum();
-	auxH1=pokemonCrush[f+1][c].getNum();
-	if(((aux1==auxV1)&&(aux1==auxV2))||((aux1==auxV1)&&(aux1==auxH1)))
-	for (l;l>=0;l--)
+	if((pokePrincipal==masAuxHoriz1)&&(pokePrincipal==menosAuxHoriz1))
 	{
-		auxH1=pokemonCrush[l][c].getNum();
-		if (l<=7)
-		{
-			if (aux1==auxH1)
-			{
-				int matchType;
-				matchType++;
-				//cout << "Removible "<<matchType<< endl;
-				pokemonCrush[l][c].setCanBeFree();
-				would=true;
-			}
-			else 
-			{
-				l=-74778;
-			}
-		}
+		would = true;
+		pokemonCrush[f][c].setNum(0);
+		pokemonCrush[f][c+1].setNum(0);
+		pokemonCrush[f][c-1].setNum(0);
 	}
+
+	if((pokePrincipal==masAuxVerti1)&&(pokePrincipal==menosAuxVerti1))
+	{
+		would = true;
+		pokemonCrush[f][c].setNum(0);
+		pokemonCrush[f+1][c].setNum(0);
+		pokemonCrush[f-1][c].setNum(0);
+	}
+	
 	return would;
 }
 
