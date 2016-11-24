@@ -53,6 +53,8 @@ public:
   void drawmatrix();
   void swap(int i, int j);
   bool inicialMatrix();
+	void escribirArchivo();
+	void leerArchivo();
  
 protected:
 

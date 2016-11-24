@@ -43,7 +43,7 @@ Tablero::Tablero()
 			pokemonCrush[i][e].setCantBeFree();
 		}
 	}
- } 
+ }
 // pokemonCrush[j][k].setNum(5);
  //pokemonCrush[j][k].setMove();
  
@@ -434,4 +434,62 @@ void Tablero::drawmatrix()
 		cout << endl;
 	}
 	cout <<endl;
+}
+void Tablero::escribirArchivo(){
+	ofstream archivo("save.dat",ios::out);
+	int level=0;
+	int time=0;
+	int pok1=0;
+	int pok2=0;
+	int pok3=0;
+	int pok4=0;
+	int pok5=0;
+	int linea=0;
+	string nombre[7]={"Level","Time","Pokemon1","Pokemon2","Pokemon3","Pokemon4","Pokemon5"};   
+	int contenido[7]={level,time,pok1,pok2,pok3,pok4,pok5}; 
+	if (!archivo){
+		cout<<"no se pudo abrir el archivo"<<endl;       
+	}
+	else{
+		for(int z=0;z<=6;z++){
+			linea=linea+1;
+			archivo<<linea<<' '<<nombre[z]<<' '<<contenido[z]<<endl;
+		}
+		linea=7;
+		for(int i=0;i<=7;i++){
+			linea=linea+1;
+			archivo<<linea<<' ';
+			for(int a=0;a<=7;a++){
+				archivo<<pokemonCrush[i][a].getNum()<<' ';
+			}
+			archivo<<endl;
+		}
+	}
+}
+void Tablero::leerArchivo() {     
+	ifstream archivo("save.dat",ios::in); //el archivo se abre para lectura   
+	if (!archivo){ 
+	    cerr<<"Error, archivo no encontrado!!"<<endl;
+		}    
+	else{
+		int b;
+		int linea;
+		string snombre[7];
+		int scontenido[7];
+		for(int z=0;z<=6;z++){
+			archivo>>linea>>snombre[z]>>scontenido[z];
+			cout<<linea<<" "<<snombre[z]<<" "<<scontenido[z]<<endl;
+		}  
+        for(int i=0;i<=7;i++){
+          	archivo>>linea;
+          	cout<<linea<<" ";
+			for(int a=0;a<=7;a++){
+				archivo>>b;
+				cout<<b<<" ";
+				pokemonCrush[i][a].setNum(b);
+			}
+			cout<<endl;
+		  }
+	}
+	archivo.close();
 }

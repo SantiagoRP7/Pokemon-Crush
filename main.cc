@@ -21,7 +21,6 @@
 using namespace std;
 #include "caja.h"
 #include "tablero.h"
-
 int main()
 {	
 	int x,y,x1,y1,op1, op2;
@@ -56,7 +55,7 @@ int main()
 				
 				break;
 			case 2:
-				
+				matrix1.leerArchivo();
 				break;
 			case 3:
 				op2= -1;
@@ -123,7 +122,9 @@ int main()
 					break;
 
 				case 2:
-				op1=-1;
+					matrix1.escribirArchivo ();
+					op2=-1;
+					op1=-1;
 					break;
 			}			
 		}
