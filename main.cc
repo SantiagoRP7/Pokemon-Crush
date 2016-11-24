@@ -24,111 +24,93 @@ using namespace std;
 
 int main()
 {	
-	int x,y,x1,y1,op;
+	int x,y,x1,y1,op1, op2;
 	int t = 0;
 	int veces =0;
 	Tablero matrix1;
-	matrix1.drawmatrix();
-	cout << "----------------\n";
 
 	bool mIni;
 	mIni=true;
-	/*while (mIni)
+	
+	while(op2 != -1)
 	{
-		mIni=false;
-		for(int i=0; i<=7;i++)
-		{
-			for(int j=0; j<=7;j++)
-			{
-				if (matrix1.retoUno (i,j))
-				{
-					//matrix1.liberarCaja();
-					matrix1.fillmatrix();
-					veces++;
-					mIni=true;
-				}
-				matrix1.fillmatrix();
-			}
-		}
-	}
-	cout <<"Se ejecuto "<< veces<<"veces por matches"<< endl;
-	veces=0;
-	*/
-	cout << "----------------\n";
-	matrix1.drawmatrix();
-	while(op != -1)
-	{
-		mIni=true;
-		while (mIni)
-		{
-			mIni=false;
-			for(int i=0; i<=7;i++)
-			{
-				for(int j=0; j<=7;j++)
-				{
-					if (matrix1.retoUno (i,j))
-					{
-						//matrix1.liberarCaja();
-						matrix1.fillmatrix();
-					
-						mIni=true;
-					}
-					
-					matrix1.fillmatrix();
-					//matrix1.drawmatrix();
-				}
-			}
-				veces++;
-		}
-		cout <<"Se ejecuto "<< veces<<"veces por matches"<< endl;
-		veces=0;
-		//matrix1.drawmatrix();
-		
-		cout << "1 - Consulta \n";
-		cout << "2 - Cambiar numero \n";
-		cout << "3 - rellenar \n";
-		cout << "4 - Dibujar \n";
-		cout << "OP: ";
-		cin >> op;
-		switch(op)
+		cout << "Digite la opcion: \n";
+		cout << "1 - Iniciar nueva partida \n";
+		cout << "2 - Cargar ultima partida \n";
+		cout << "3 - Salir \n";
+		cin >> op2;
+		switch (op2)
 		{
 			case 1:
-					break;
-			
+				
+				break;
 			case 2:
-				cout << "x: ";
-				cin >> x;
-				cout << "y: ";
-				cin >> y;
-				cout << "x1: ";
-				cin >> x1;
-				cout << "y1: ";
-				cin >> y1;
-				matrix1.validMove(x,y,x1,y1);
-				matrix1.drawmatrix();
-				matrix1.fillmatrix();
-				matrix1.drawmatrix();
-				/*matrix1.liberarCaja();
-				matrix1.drawmatrix();
-				matrix1.fillmatrix();
-				matrix1.drawmatrix();*/
+				
 				break;
-			
 			case 3:
-				matrix1.fillmatrix();
-				matrix1.liberarCaja();
-				matrix1.drawmatrix();
-								
-				cout << "----------------\n";
-				matrix1.drawmatrix();
+				op2= -1;
+				op1= -1;
 				break;
-			case 4:
-				matrix1.liberarCaja();
-				cout << "----------------\n";
-				matrix1.drawmatrix();
-				cout << "----------------\n";
-		}			
-	}
+		}
 		
+		while(op1 != -1)
+		{
+			mIni=true;
+			while (mIni)
+			{
+				mIni=false;
+				for(int i=0; i<=7;i++)
+				{
+					for(int j=0; j<=7;j++)
+					{
+						if (matrix1.retoUno (i,j))
+						{
+							matrix1.fillmatrix();
+					
+							mIni=true;
+						}					
+						matrix1.fillmatrix();
+					}
+				}
+					veces++;
+				matrix1.drawmatrix();
+				matrix1.fillmatrix();
+				matrix1.drawmatrix();
+			}
+			cout <<"Se ejecuto "<< veces<<" veces por matches"<< endl;
+			veces=0;
+			//matrix1.drawmatrix();
+			cout << "Digite la opcion: \n";
+			cout << "1 - Cambiar numero \n";
+			cout << "2 - Guardar y salir \n";
+			
+			cin >> op1;
+			switch(op1)
+			{		
+				case 1:
+					cout << "x: ";
+					cin >> x;
+					cout << "y: ";
+					cin >> y;
+					cout << "x1: ";
+					cin >> x1;
+					cout << "y1: ";
+					cin >> y1;
+					matrix1.validMove(x,y,x1,y1);
+					matrix1.drawmatrix();
+					matrix1.fillmatrix();
+					matrix1.drawmatrix();
+					/*matrix1.liberarCaja();
+					matrix1.drawmatrix();
+					matrix1.fillmatrix();
+					matrix1.drawmatrix();*/
+					break;
+
+				case 2:
+				op1=-1;
+					break;
+			}			
+		}
+	}
 	return 0;
 }
