@@ -41,17 +41,13 @@ public:
   void setCanBeFree();
   void setCantBeFree();
   bool getCanBeFree();
-	/////////////////////////
-	void setRemov();
+  void setRemov();
 
 protected:
 
 private:
-	bool removable;
-	int num; // sean (0. 1. 2. 3. 4.) pokemones, 5. la pokeball y 6. el espacio vacio.
-	int valor;
-	bool canBeFree;
-	bool move;
+	int num; // representacion de pokemon.
+	int valor; // 
 	Coordenada coor;// donde "coor" es la cooredenada relativa de la caja en la matriz.
 };
 
