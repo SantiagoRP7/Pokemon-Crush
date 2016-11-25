@@ -66,6 +66,7 @@ int main()
 		while(op1 != -1)
 		{
 			mIni=true;
+			
 			while (mIni)
 			{
 				mIni=false;
@@ -73,18 +74,47 @@ int main()
 				{
 					for(int j=0; j<=7;j++)
 					{
-						if (matrix1.retoUno (i,j))
+						int prueba1=matrix1.retoUno (i,j);
+						switch (prueba1)
 						{
-							matrix1.fillmatrix();
-					
-							mIni=true;
+							case 1:
+								mIni=true;
+								cantidad1--;
+								
+						matrix1.drawmatrix();
+								matrix1.fillmatrix();
+								break;
+							case 2:
+								mIni=true;
+								cantidad2--;
+								
+						matrix1.drawmatrix();
+								matrix1.fillmatrix();
+								break;
+							case 3:
+								mIni=true;
+								cantidad3--;
+								
+						matrix1.drawmatrix();
+								matrix1.fillmatrix();
+								break;
+							case 4:
+								mIni=true;
+								cantidad4--;
+								
+						matrix1.drawmatrix();
+								matrix1.fillmatrix();
+								break;
+							default:
+								break;
+								
+							
 						}					
 						matrix1.fillmatrix();
 					}
 				}
 					veces++;
-				matrix1.drawmatrix();
-				matrix1.fillmatrix();
+				cout<<endl;
 				matrix1.drawmatrix();
 			}
 			cout <<"Se ejecuto "<< veces<<" veces por matches"<< endl;
@@ -111,14 +141,48 @@ int main()
 					cin >> x1;
 					cout << "y1: ";
 					cin >> y1;
-					matrix1.validMove(x,y,x1,y1);
-					matrix1.drawmatrix();
-					matrix1.fillmatrix();
-					matrix1.drawmatrix();
-					/*matrix1.liberarCaja();
-					matrix1.drawmatrix();
-					matrix1.fillmatrix();
-					matrix1.drawmatrix();*/
+					if(matrix1.validMove(x,y,x1,y1))
+					{
+						matrix1.movCaja(x,y,x1,y1);
+						int prueba1=matrix1.retoUno (x1,y1);
+						switch (prueba1)
+						{
+							case 1:
+								mIni=true;
+								cantidad1--;
+								
+						matrix1.drawmatrix();
+								matrix1.fillmatrix();
+								break;
+							case 2:
+								mIni=true;
+								cantidad2--;
+								
+						matrix1.drawmatrix();
+								matrix1.fillmatrix();
+								break;
+							case 3:
+								mIni=true;
+								cantidad3--;
+								
+						matrix1.drawmatrix();
+								matrix1.fillmatrix();
+								break;
+							case 4:
+								mIni=true;
+								cantidad4--;
+								
+						matrix1.drawmatrix();
+								matrix1.fillmatrix();
+								break;
+							default:
+								break;
+								
+							
+						}							
+						matrix1.fillmatrix();
+						matrix1.drawmatrix();
+					}
 					break;
 
 				case 2:

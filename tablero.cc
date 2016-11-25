@@ -81,12 +81,23 @@ void Tablero::liberarCaja()
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-void Tablero::validMove (int f,int c, int i, int e)//0 1 1 1
+
+bool Tablero::validMove (int f,int c, int i, int e)//0 1 1 1
 {
+	bool paraRU;
+	paraRU=false;
 	int dir;
 	dir=0;
 	int aux1, aux2, aux3, aux4, aux5, au2, au3, au4, au5;
-		aux1=pokemonCrush[f][c].getNum(); //
+	aux2=0;
+	aux3=0;
+	aux4=0;
+	aux5=0;
+	au2=0;
+	au3=0;
+	au4=0;
+	au5=0;
+	aux1=pokemonCrush[f][c].getNum(); //
 	if(e<7)
 	{
 		aux2=pokemonCrush[i][e+1].getNum();
@@ -122,15 +133,16 @@ void Tablero::validMove (int f,int c, int i, int e)//0 1 1 1
 			au5=pokemonCrush[i-2][e].getNum();
 		}
 	}
-		 //  2 1		2
-		 //  3 1		3
-		 //  0 1		1
-		 //  -1 1	--
+		 
 	
 	if (((aux1==aux2)&&(aux1==aux3))||((aux1==aux4)&&(aux1==aux5))||((aux1==aux2)&&(aux1==aux4)))
 	{
+		cout <<"FUCK THAT SHIT!"<<endl;
 		//Mover caja horizontal
 		movCaja(f,c,i,e);
+		drawmatrix ();
+		cout <<"FUCK THAT SHIT! you too"<<endl;
+		paraRU=true;
 		
 	}
 	
@@ -138,23 +150,29 @@ void Tablero::validMove (int f,int c, int i, int e)//0 1 1 1
 	{
 		//Move caja vertical
 		movCaja(f,c,i,e);
+		paraRU=true;
 	}
+	return paraRU;
 }
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-void Tablero::movCaja(int f, int c, int i,int e, int dir)
+void Tablero::movCaja(int f, int c, int i,int e)
 {
 //Se crean dos auxiliares para guardar el numero del pokemon 
     int aux1,aux2;
     aux1=pokemonCrush[f][c].getNum();
     aux2=pokemonCrush[i][e].getNum();
 //Se setea el nuevo valor en la posicion a ambas cajas
-    pokemonCrush[f][c].setNum(aux2);
-    pokemonCrush[i][e].setNum(aux1);
+	pokemonCrush[i][e].setNum(aux1);
+	pokemonCrush[f][c].setNum(aux2);
+    
 
+	drawmatrix ();
+	cout <<"FUCK THAT SHIT! you toooooo"<<endl;
+	
    // makeRemov(i,e,dir,1);
-	retoUno(i,e);
+	//retoUno(i,e);
 }
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 void Tablero::makeRemov(int i, int e, int dir, int prov)
@@ -175,9 +193,9 @@ bool Tablero::inicialMatrix()
 }
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-bool Tablero::retoUno(int f, int c)
+int Tablero::retoUno(int f, int c)
 {
-	bool would = false;
+	int would = 6;
 	int pokePrincipal=pokemonCrush[f][c].getNum();
 	int masAuxHoriz1=0;
 	int masAuxHoriz2=0;
@@ -205,7 +223,7 @@ bool Tablero::retoUno(int f, int c)
 
 	if((pokePrincipal==masAuxHoriz1)&&(pokePrincipal==masAuxHoriz2))
 	{
-		would = true;
+		would = pokePrincipal;
 		pokemonCrush[f][c].setNum(0);
 		pokemonCrush[f][c+1].setNum(0);
 		pokemonCrush[f][c+2].setNum(0);
@@ -228,7 +246,7 @@ bool Tablero::retoUno(int f, int c)
 	}
 	if((pokePrincipal==menosAuxHoriz1)&&(pokePrincipal==menosAuxHoriz2))
 	{
-		would = true;
+		would = pokePrincipal;
 		pokemonCrush[f][c].setNum(0);
 		pokemonCrush[f][c-1].setNum(0);
 		pokemonCrush[f][c-2].setNum(0);
@@ -279,7 +297,7 @@ bool Tablero::retoUno(int f, int c)
 
 	if((pokePrincipal==masAuxVerti1)&&(pokePrincipal==masAuxVerti2))
 	{
-		would = true;
+		would = pokePrincipal;
 		pokemonCrush[f][c].setNum(0);
 		pokemonCrush[f+1][c].setNum(0);
 		pokemonCrush[f+2][c].setNum(0);
@@ -302,7 +320,7 @@ bool Tablero::retoUno(int f, int c)
 	}
 	if((pokePrincipal==menosAuxVerti1)&&(pokePrincipal==menosAuxVerti2))
 	{
-		would = true;
+		would = pokePrincipal;
 		pokemonCrush[f][c].setNum(0);
 		pokemonCrush[f-1][c].setNum(0);
 		pokemonCrush[f-2][c].setNum(0);
@@ -326,7 +344,7 @@ bool Tablero::retoUno(int f, int c)
 
 	if((pokePrincipal==masAuxHoriz1)&&(pokePrincipal==menosAuxHoriz1))
 	{
-		would = true;
+		would = pokePrincipal;
 		pokemonCrush[f][c].setNum(0);
 		pokemonCrush[f][c+1].setNum(0);
 		pokemonCrush[f][c-1].setNum(0);
@@ -334,12 +352,11 @@ bool Tablero::retoUno(int f, int c)
 
 	if((pokePrincipal==masAuxVerti1)&&(pokePrincipal==menosAuxVerti1))
 	{
-		would = true;
+		would = pokePrincipal;
 		pokemonCrush[f][c].setNum(0);
 		pokemonCrush[f+1][c].setNum(0);
 		pokemonCrush[f-1][c].setNum(0);
 	}
-	
 	return would;
 }
 
@@ -411,18 +428,18 @@ void Tablero::quedanMov()
 
 void Tablero::fillmatrix()
 {
+	
 	//////////////////////////////////////////////////////////////////////////
 	for (int k = 0; k < 8; k++)
 	{
-	for (int i = 7; i >= 0; i--)
-	{
-		for (int j = 0; j < 8; j++)
-		{	
-			swap(i,j);
-		}
+		for (int i = 7; i >= 0; i--)
+		{
+			for (int j = 0; j < 8; j++)
+			{	
+				swap(i,j);
+			}
 	}
 	}
-	
 	srand (time(NULL));
 	for(int i=0;i<8;i++)
 	 {

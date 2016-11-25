@@ -43,10 +43,10 @@ public:
   void generarCajas();
   void jugar();
  //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-  void validMove(int f,int c, int i, int e);
-  void movCaja(int f, int c, int i,int e, int dir);
+  bool validMove(int f,int c, int i, int e);
+  void movCaja(int f, int c, int i,int e);
   void makeRemov(int i, int e, int dir, int prov);
-  bool retoUno(int i, int e);
+  int retoUno(int i, int e);
   void quedanMov();
 /////////////////////////////////////////
   void fillmatrix();
