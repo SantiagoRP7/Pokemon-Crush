@@ -15,6 +15,10 @@ pokemon-crush is free software: you can redistribute it and/or modify it
  * 
  * You should have received a copy of the GNU General Public License along
  * with this program.  If not, see <http://www.gnu.org/licenses/>.
+	 CRC:
+	 Clase: Tablero
+	 Responsabilidad: Simula ser un tablero que contiene Cajas equivalentes a un pokemon.
+	 Colaboracion: Usa la clase Caja para modificar posiciones y atributos.
  */
 
 #ifndef _TABLERO_H_
@@ -37,29 +41,25 @@ public:
   void showInstruc();
   bool CompMatch();
   void toWin(Caja *b);
-  void liberarCaja();
+ 
   bool validarCoor();
   void bajarCajas();
   void generarCajas();
   void jugar();
- //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
   bool validMove(int f,int c, int i, int e);
   void movCaja(int f, int c, int i,int e);
-  void makeRemov(int i, int e, int dir, int prov);
   int retoUno(int i, int e);
   void quedanMov();
-/////////////////////////////////////////
   void fillmatrix();
   void drawmatrix();
   void swap(int i, int j);
-  bool inicialMatrix();
 	void escribirArchivo();
 	void leerArchivo();
  
 protected:
 
 private:
-Caja pokemonCrush[8][8];
+Caja pokemonCrush[4][4];
 
 };
 
