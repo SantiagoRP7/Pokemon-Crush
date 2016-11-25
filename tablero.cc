@@ -40,12 +40,11 @@ Tablero::Tablero()
 		{
 			pokemonCrush[i][e].setCoordenada(i, e);
 			pokemonCrush[i][e].setNum(k);
-			pokemonCrush[i][e].setCantBeFree();
 		}
 	}
  }
-// pokemonCrush[j][k].setNum(5);
- //pokemonCrush[j][k].setMove();
+// pokemonCrush[j][k].setNum(5); //reservado para pokeball.
+ //pokemonCrush[j][k].setMove(); //reservado para pokeball.
  
 }
 
@@ -59,25 +58,8 @@ void Tablero::leerNivel(string lev)
 void Tablero::showInstruc()
 {
 }
-/* void Tablero::showTablero()
-{
-}
-*/
-void Tablero::liberarCaja()
-{
-	for(int i=0;i<8;i++)
-	{
-		for(int j=0;j<8;j++)
-		{
-			if (pokemonCrush[i][j].getCanBeFree() == true)
-			{
-				//pokemonCrush[i][j].setCanBeFree();
-				pokemonCrush[i][j].setNum(0);
-				pokemonCrush[i][j].setCantBeFree();
-			}
-		}
-	}
-}
+
+
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -173,23 +155,7 @@ void Tablero::movCaja(int f, int c, int i,int e)
 	//retoUno(i,e);
 }
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-void Tablero::makeRemov(int i, int e, int dir, int prov)
-{
-    pokemonCrush[i][e].setCanBeFree();
-}
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-bool Tablero::inicialMatrix()
-{
-	for (int i=0;i<8;i++)
-	{
-		for (int j=0;j<8;j++)
-		{
-			pokemonCrush[i][j].setCantBeFree();
-		}
-	}
-}
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 int Tablero::retoUno(int f, int c)
 {

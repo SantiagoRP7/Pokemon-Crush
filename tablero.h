@@ -41,22 +41,18 @@ public:
   void showInstruc();
   bool CompMatch();
   void toWin(Caja *b);
-  void liberarCaja();
+ 
   bool validarCoor();
   void bajarCajas();
   void generarCajas();
   void jugar();
- //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
   bool validMove(int f,int c, int i, int e);
   void movCaja(int f, int c, int i,int e);
-  void makeRemov(int i, int e, int dir, int prov);
   int retoUno(int i, int e);
   void quedanMov();
-/////////////////////////////////////////
   void fillmatrix();
   void drawmatrix();
   void swap(int i, int j);
-  bool inicialMatrix();
 	void escribirArchivo();
 	void leerArchivo();
  

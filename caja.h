@@ -37,17 +37,13 @@ public:
   void setNum(int num1);
   void setValor(int valor1);
   void setCoordenada(int x, int y);
-  void setMove();
-  void setCanBeFree();
-  void setCantBeFree();
-  bool getCanBeFree();
   void setRemov();
 
 protected:
 
 private:
 	int num; // representacion de pokemon.
-	int valor; // 
+	int valor; // Representa 
 	Coordenada coor;// donde "coor" es la cooredenada relativa de la caja en la matriz.
 };
 
