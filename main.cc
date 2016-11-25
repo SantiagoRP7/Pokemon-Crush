@@ -74,9 +74,9 @@ int main()
 			while (mIni)
 			{
 				mIni=false;
-				for(int i=0; i<=7;i++)
+				for(int i=0; i<=3;i++)
 				{
-					for(int j=0; j<=7;j++)
+					for(int j=0; j<=3;j++)
 					{
 						int prueba1=matrix1.retoUno (i,j);
 						switch (prueba1)

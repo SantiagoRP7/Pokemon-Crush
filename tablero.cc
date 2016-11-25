@@ -26,25 +26,25 @@ pokemon-crush is free software: you can redistribute it and/or modify it
 
 Tablero::Tablero()
 {
- srand (time(NULL));
- int j= rand() % 8;
- int k= rand() % 4;
- for(int i=0;i<8;i++)
- {
- 	for(int e=0;e<8;e++)
+	srand (time(NULL));
+	int j= rand() % 8;
+	int k= rand() % 4;
+	for(int i=0;i<4;i++)
 	{
-		int k= rand() % 4 + 1;
-		int aux1;
-		aux1=pokemonCrush[i][e].getNum();
-		if(aux1==0)
+ 		for(int e=0;e<4;e++)
 		{
-			pokemonCrush[i][e].setCoordenada(i, e);
-			pokemonCrush[i][e].setNum(k);
+			int k= rand() % 4 + 1;
+			int aux1;
+			aux1=pokemonCrush[i][e].getNum();
+			if(aux1==0)
+			{
+				pokemonCrush[i][e].setCoordenada(i, e);
+				pokemonCrush[i][e].setNum(k);
+			}
 		}
-	}
- }
-// pokemonCrush[j][k].setNum(5); //reservado para pokeball.
- //pokemonCrush[j][k].setMove(); //reservado para pokeball.
+ 	}
+	//pokemonCrush[j][k].setNum(5); //reservado para pokeball.
+ 	//pokemonCrush[j][k].setMove(); //reservado para pokeball.
  
 }
 
@@ -80,10 +80,10 @@ bool Tablero::validMove (int f,int c, int i, int e)//0 1 1 1
 	au4=0;
 	au5=0;
 	aux1=pokemonCrush[f][c].getNum(); //
-	if(e<7)
+	if(e<3)
 	{
 		aux2=pokemonCrush[i][e+1].getNum();
-		if(e<6)
+		if(e<2)
 		{
 			aux3=pokemonCrush[i][e+2].getNum();
 		}
@@ -98,10 +98,10 @@ bool Tablero::validMove (int f,int c, int i, int e)//0 1 1 1
 		}
 	}  		
 		 
-	if(i<7)
+	if(i<3)
 	{
 		au2=pokemonCrush[i+1][e].getNum();
-		if(i<6)
+		if(i<2)
 		{
 			au3=pokemonCrush[i+2][e].getNum();
 		}
@@ -166,10 +166,10 @@ int Tablero::retoUno(int f, int c)
 	int menosAuxHoriz1=0;
 	int menosAuxHoriz2=0;
 	int l;
-	if (c<7)
+	if (c<3)
 	{
 		masAuxHoriz1=pokemonCrush[f][c+1].getNum();
-		if (c<6)
+		if (c<2)
 		{
 			masAuxHoriz2=pokemonCrush[f][c+2].getNum();
 		}
@@ -194,7 +194,7 @@ int Tablero::retoUno(int f, int c)
 		if(c<=5)
 		{
 			l=c+3;
-			for(l;l<=7;l++)
+			for(l;l<=3;l++)
 			{
 				if(pokemonCrush[f][l].getNum() == pokePrincipal)
 				{
@@ -240,10 +240,10 @@ int Tablero::retoUno(int f, int c)
 	int menosAuxVerti1=0;
 	int menosAuxVerti2=0;
 	
-	if (f<7)
+	if (f<3)
 	{
 		masAuxVerti1=pokemonCrush[f+1][c].getNum();
-		if (f<6)
+		if (f<2)
 		{
 			masAuxVerti2=pokemonCrush[f+2][c].getNum();
 		}
@@ -268,7 +268,7 @@ int Tablero::retoUno(int f, int c)
 		if(f<=5)
 		{
 			l=f+3;
-			for(l;l<=7;l++)
+			for(l;l<=4;l++)
 			{
 				if(pokemonCrush[l][c].getNum() == pokePrincipal)
 				{
@@ -327,9 +327,9 @@ int Tablero::retoUno(int f, int c)
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 void Tablero::quedanMov()
 {
-   for (int i=0;i<8;i++)
+   for (int i=0;i<4;i++)
    {
-      for (int j=0;j<8;j++)
+      for (int j=0;j<4;j++)
       {    
           int aux1, aux2, aux3, aux4, aux5;
           aux1=pokemonCrush[i][j].getNum();
@@ -357,9 +357,9 @@ void Tablero::quedanMov()
 		  }
 	  }    
    }
-	for (int j=0;j<8;j++)
+	for (int j=0;j<4;j++)
 	{
-		for (int i=0;i<8;i++)
+		for (int i=0;i<4;i++)
 		{    
 			int aux1, aux2, aux3, aux4, aux5;
 			aux1=pokemonCrush[i][j].getNum();
@@ -394,20 +394,20 @@ void Tablero::fillmatrix()
 {
 	
 	//////////////////////////////////////////////////////////////////////////
-	for (int k = 0; k < 8; k++)
+	for (int k = 0; k < 4; k++)
 	{
-		for (int i = 7; i >= 0; i--)
+		for (int i = 3; i >= 0; i--)
 		{
-			for (int j = 0; j < 8; j++)
+			for (int j = 0; j < 4; j++)
 			{	
 				swap(i,j);
 			}
 	}
 	}
 	srand (time(NULL));
-	for(int i=0;i<8;i++)
+	for(int i=0;i<4;i++)
 	 {
-	 	for(int e=0;e<8;e++)
+	 	for(int e=0;e<4;e++)
 		{
 			int k= rand() % 4 + 1;
 			int aux1;
@@ -418,7 +418,7 @@ void Tablero::fillmatrix()
 				pokemonCrush[i][e].setNum(k);
 			}
 		}
-	 } 
+	 }
 }
 
 void Tablero::swap(int i, int j)
@@ -438,9 +438,9 @@ void Tablero::swap(int i, int j)
 
 void Tablero::drawmatrix()
 {
-	for (int i = 0; i < 8; i++)
+	for (int i = 0; i < 4; i++)
 	{
-		for (int j = 0; j < 8; j++)
+		for (int j = 0; j < 4; j++)
 		{
 			cout << pokemonCrush[i][j].getNum() << "  ";
 		}
@@ -448,7 +448,8 @@ void Tablero::drawmatrix()
 	}
 	cout <<endl;
 }
-void Tablero::escribirArchivo(){
+void Tablero::escribirArchivo()
+{
 	ofstream archivo("save.dat",ios::out);
 	int level=0;
 	int time=0;
@@ -464,22 +465,26 @@ void Tablero::escribirArchivo(){
 		cout<<"no se pudo abrir el archivo"<<endl;       
 	}
 	else{
-		for(int z=0;z<=6;z++){
+		for(int z=0;z<=2;z++)
+		{
 			linea=linea+1;
 			archivo<<linea<<' '<<nombre[z]<<' '<<contenido[z]<<endl;
 		}
-		linea=7;
-		for(int i=0;i<=7;i++){
+		linea=3;
+		for(int i=0;i<=3;i++)
+		{
 			linea=linea+1;
 			archivo<<linea<<' ';
-			for(int a=0;a<=7;a++){
+			for(int a=0;a<=3;a++)
+			{
 				archivo<<pokemonCrush[i][a].getNum()<<' ';
 			}
 			archivo<<endl;
 		}
 	}
 }
-void Tablero::leerArchivo() {     
+void Tablero::leerArchivo()
+{     
 	ifstream archivo("save.dat",ios::in); //el archivo se abre para lectura   
 	if (!archivo){ 
 	    cerr<<"Error, archivo no encontrado!!"<<endl;
@@ -487,16 +492,19 @@ void Tablero::leerArchivo() {
 	else{
 		int b;
 		int linea;
-		string snombre[7];
-		int scontenido[7];
-		for(int z=0;z<=6;z++){
+		string snombre[3];
+		int scontenido[3];
+		for(int z=0;z<=2;z++)
+		{
 			archivo>>linea>>snombre[z]>>scontenido[z];
 			cout<<linea<<" "<<snombre[z]<<" "<<scontenido[z]<<endl;
 		}  
-        for(int i=0;i<=7;i++){
+        for(int i=0;i<=3;i++)
+		{
           	archivo>>linea;
           	cout<<linea<<" ";
-			for(int a=0;a<=7;a++){
+			for(int a=0;a<=3;a++)
+			{
 				archivo>>b;
 				cout<<b<<" ";
 				pokemonCrush[i][a].setNum(b);
