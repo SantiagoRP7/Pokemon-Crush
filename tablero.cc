@@ -137,11 +137,9 @@ bool Tablero::validMove (int f,int c, int i, int e)//0 1 1 1
 	
 	if (((aux1==aux2)&&(aux1==aux3))||((aux1==aux4)&&(aux1==aux5))||((aux1==aux2)&&(aux1==aux4)))
 	{
-		cout <<"FUCK THAT SHIT!"<<endl;
 		//Mover caja horizontal
-		movCaja(f,c,i,e);
+		//movCaja(f,c,i,e);
 		drawmatrix ();
-		cout <<"FUCK THAT SHIT! you too"<<endl;
 		paraRU=true;
 		
 	}
@@ -149,7 +147,8 @@ bool Tablero::validMove (int f,int c, int i, int e)//0 1 1 1
 	if (((aux1==au2)&&(aux1==au3))||((aux1==au4)&&(aux1==au5))||((aux1==au2)&&(aux1==au4)))
 	{
 		//Move caja vertical
-		movCaja(f,c,i,e);
+		//movCaja(f,c,i,e);
+		drawmatrix ();
 		paraRU=true;
 	}
 	return paraRU;
@@ -169,7 +168,6 @@ void Tablero::movCaja(int f, int c, int i,int e)
     
 
 	drawmatrix ();
-	cout <<"FUCK THAT SHIT! you toooooo"<<endl;
 	
    // makeRemov(i,e,dir,1);
 	//retoUno(i,e);
@@ -450,6 +448,7 @@ void Tablero::fillmatrix()
 			aux1=pokemonCrush[i][e].getNum();
 			if(aux1==0)
 			{
+				drawmatrix();
 				pokemonCrush[i][e].setNum(k);
 			}
 		}

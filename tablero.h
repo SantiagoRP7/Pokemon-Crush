@@ -15,6 +15,10 @@ pokemon-crush is free software: you can redistribute it and/or modify it
  * 
  * You should have received a copy of the GNU General Public License along
  * with this program.  If not, see <http://www.gnu.org/licenses/>.
+	 CRC:
+	 Clase: Tablero
+	 Responsabilidad: Simula ser un tablero que contiene Cajas equivalentes a un pokemon.
+	 Colaboracion: Usa la clase Caja para modificar posiciones y atributos.
  */
 
 #ifndef _TABLERO_H_
