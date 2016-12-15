@@ -2,17 +2,17 @@
 /*
  * main.cc
  * Copyright (C) 2016 CRISTIAN MANOSALVA BELTRAN <crismb@s4pc20>
- * 
+ *
  * foobar-cpp is free software: you can redistribute it and/or modify it
  * under the terms of the GNU General Public License as published by the
  * Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
- * 
+ *
  * foobar-cpp is distributed in the hope that it will be useful, but
  * WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
  * See the GNU General Public License for more details.
- * 
+ *
  * You should have received a copy of the GNU General Public License along
  * with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
@@ -22,26 +22,30 @@ using namespace std;
 #include "caja.h"
 #include "tablero.h"
 int main()
-{	
+{
 	int x,y,x1,y1,op1, op2;
 	int t = 0;
 	int veces =0;
+
 	Tablero matrix1;
+
 	int cantidad1,cantidad2,cantidad3,cantidad4,cantidad5;
 	int tipo1,tipo2,tipo3,tipo4,tipo5;
 	bool mIni;
+
 	mIni=true;
 	cantidad1=0;
 	cantidad2=0;
 	cantidad3=0;
 	cantidad4=0;
 	cantidad5=0;
+
 	tipo1=1;
 	tipo2=2;
 	tipo3=3;
 	tipo4=4;
 	tipo5=5;
-	
+
 	while(op2 != -1)
 	{
 		cout << "Digite la opcion: \n";
@@ -52,7 +56,7 @@ int main()
 		switch (op2)
 		{
 			case 1:
-				
+
 				break;
 			case 2:
 				matrix1.leerArchivo();
@@ -62,11 +66,11 @@ int main()
 				op1= -1;
 				break;
 		}
-		
+
 		while(op1 != -1)
 		{
 			mIni=true;
-			
+
 			while (mIni)
 			{
 				mIni=false;
@@ -80,36 +84,36 @@ int main()
 							case 1:
 								mIni=true;
 								cantidad1--;
-								
+
 						matrix1.drawmatrix();
 								matrix1.fillmatrix();
 								break;
 							case 2:
 								mIni=true;
 								cantidad2--;
-								
+
 						matrix1.drawmatrix();
 								matrix1.fillmatrix();
 								break;
 							case 3:
 								mIni=true;
 								cantidad3--;
-								
+
 						matrix1.drawmatrix();
 								matrix1.fillmatrix();
 								break;
 							case 4:
 								mIni=true;
 								cantidad4--;
-								
+
 						matrix1.drawmatrix();
 								matrix1.fillmatrix();
 								break;
 							default:
 								break;
-								
-							
-						}					
+
+
+						}
 						matrix1.fillmatrix();
 					}
 				}
@@ -128,10 +132,10 @@ int main()
 			cout << "Digite la opcion: \n";
 			cout << "1 - Cambiar numero \n";
 			cout << "2 - Guardar y salir \n";
-			
+
 			cin >> op1;
 			switch(op1)
-			{		
+			{
 				case 1:
 					cout << "x: ";
 					cin >> x;
@@ -150,36 +154,36 @@ int main()
 							case 1:
 								mIni=true;
 								cantidad1--;
-								
+
 						matrix1.drawmatrix();
 								matrix1.fillmatrix();
 								break;
 							case 2:
 								mIni=true;
 								cantidad2--;
-								
+
 						matrix1.drawmatrix();
 								matrix1.fillmatrix();
 								break;
 							case 3:
 								mIni=true;
 								cantidad3--;
-								
+
 						matrix1.drawmatrix();
 								matrix1.fillmatrix();
 								break;
 							case 4:
 								mIni=true;
 								cantidad4--;
-								
+
 						matrix1.drawmatrix();
 								matrix1.fillmatrix();
 								break;
 							default:
 								break;
-								
-							
-						}							
+
+
+						}
 						matrix1.fillmatrix();
 						matrix1.drawmatrix();
 					}
@@ -190,7 +194,7 @@ int main()
 					op2=-1;
 					op1=-1;
 					break;
-			}			
+			}
 		}
 	}
 	return 0;

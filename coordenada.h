@@ -16,7 +16,11 @@ pokemon-crush is free software: you can redistribute it and/or modify it
  * You should have received a copy of the GNU General Public License along
  * with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-
+/*
+Clase: Coordenada.
+Responsabilidad: Contener las posiciones.
+Colaboracion: Caja, Tablero.
+*/
 #ifndef _COORDENADA_H_
 #define _COORDENADA_H_
 

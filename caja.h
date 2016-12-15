@@ -15,6 +15,11 @@ pokemon-crush is free software: you can redistribute it and/or modify it
  * 
  * You should have received a copy of the GNU General Public License along
  * with this program.  If not, see <http://www.gnu.org/licenses/>.
+	 CRC
+	 Clase: Caja.
+	 Responsabilidad: Simula ser una caja que contiene atributos para ser utilizados.
+	 Colaboracion: Deja que la Clase tablero use sus metodos y modifique sus atributos.
+	 
  */
 
 #ifndef _CAJA_H_
@@ -32,21 +37,13 @@ public:
   void setNum(int num1);
   void setValor(int valor1);
   void setCoordenada(int x, int y);
-  void setMove();
-  void setCanBeFree();
-  void setCantBeFree();
-  bool getCanBeFree();
-	/////////////////////////
-	void setRemov();
+  void setRemov();
 
 protected:
 
 private:
-	bool removable;
-	int num; // sean (0. 1. 2. 3. 4.) pokemones, 5. la pokeball y 6. el espacio vacio.
-	int valor;
-	bool canBeFree;
-	bool move;
+	int num; // representacion de pokemon.
+	int valor; // Representa 
 	Coordenada coor;// donde "coor" es la cooredenada relativa de la caja en la matriz.
 };
 
