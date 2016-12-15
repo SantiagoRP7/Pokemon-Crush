@@ -1,0 +1,295 @@
+void Tablero::matchFour()
+{
+    for (int i=0;i<8;i++)
+    {
+       for (int j=0;j<8;j++) 
+       {
+           if (pokemonCrush[i][j].getNum()==0)
+           {
+               if (pokemonCrush[i+1][j].getNum() != 0)
+               {
+                   pokemonCrush[i+1][j].setNum(9);
+               }
+               if (pokemonCrush[i-1][j].getNum() != 0)
+               {
+                   pokemonCrush[i-1][j].setNum(9);
+               }
+               if (pokemonCrush[i][j+1].getNum() != 0)
+               {
+                   pokemonCrush[i][j+1].setNum(9);
+               }
+               if (pokemonCrush[i][j-1].getNum() != 0)
+               {
+                   pokemonCrush[i][j-1].setNum(9);
+               }
+           }
+       }
+    }
+}
+void Tablero::matchFive(int x)
+{
+    for (int i=0;i<8;i++)
+    {
+       for (int j=0;j<8;j++) 
+       {
+           if(pokemonCrush[i][j].getNum() == x)
+           {
+               pokemonCrush[i][j].setNum(8);
+           }
+       }
+    }
+}
+int Tablero::retoUno(int f, int c)
+{
+	int would = 6;
+	int pokePrincipal=pokemonCrush[f][c].getNum();
+	int masAuxHoriz1=0;
+	int masAuxHoriz2=0;
+	int menosAuxHoriz1=0;
+	int menosAuxHoriz2=0;
+	int l;
+
+	int matchType=3;
+		
+	if (c<3)
+	{
+		masAuxHoriz1=pokemonCrush[f][c+1].getNum();
+		if (c<2)
+		{
+			masAuxHoriz2=pokemonCrush[f][c+2].getNum();
+		}
+			
+	}
+	if(c>0)
+	{
+		menosAuxHoriz1=pokemonCrush[f][c-1].getNum();
+		if(c>1)
+		{
+			menosAuxHoriz2=pokemonCrush[f][c-2].getNum();
+		}
+	}
+	
+
+	if((pokePrincipal==masAuxHoriz1)&&(pokePrincipal==masAuxHoriz2))
+	{
+		would = pokePrincipal;
+		pokemonCrush[f][c].setNum(0);
+		pokemonCrush[f][c+1].setNum(0);
+		pokemonCrush[f][c+2].setNum(0);
+		if(c<=5)
+		{
+			l=c+3;
+			for(l;l<=7;l++)
+			{
+				if(pokemonCrush[f][l].getNum() == pokePrincipal)
+				{
+					pokemonCrush[f][l].setNum(0);
+					matchType++;
+					if(matchType == 4)
+					{
+						matchFour();
+					}
+				}
+				else 
+				{
+					l=8;
+				}
+			
+			}
+		}
+	}
+	if((pokePrincipal==menosAuxHoriz1)&&(pokePrincipal==menosAuxHoriz2))
+	{
+		would = pokePrincipal;
+		pokemonCrush[f][c].setNum(0);
+		pokemonCrush[f][c-1].setNum(0);
+		pokemonCrush[f][c-2].setNum(0);
+		if(c>=3)
+		{
+			l=c-3;
+			for(l;l>=0;l--)
+			{
+				if(pokemonCrush[f][l].getNum() == pokePrincipal)
+				{
+					pokemonCrush[f][l].setNum(0);
+					matchType++;
+					if(matchType == 4)
+					{
+						matchFour();
+					}
+				}
+				else 
+				{
+					l=-1;
+				}
+			
+			}
+		}
+	}
+
+
+
+
+	int masAuxVerti1=0;
+	int masAuxVerti2=0;
+	int menosAuxVerti1=0;
+	int menosAuxVerti2=0;
+	
+	if (f<3)
+	{
+		masAuxVerti1=pokemonCrush[f+1][c].getNum();
+		if (f<2)
+		{
+			masAuxVerti2=pokemonCrush[f+2][c].getNum();
+		}
+			
+	}
+	if(f>0)
+	{
+		menosAuxVerti1=pokemonCrush[f-1][c].getNum();
+		if(f>1)
+		{
+			menosAuxVerti2=pokemonCrush[f-2][c].getNum();
+		}
+	}
+	
+
+	if((pokePrincipal==masAuxVerti1)&&(pokePrincipal==masAuxVerti2))
+	{
+		would = pokePrincipal;
+		pokemonCrush[f][c].setNum(0);
+		pokemonCrush[f+1][c].setNum(0);
+		pokemonCrush[f+2][c].setNum(0);
+		if(f<=5)
+		{
+			l=f+3;
+			for(l;l<=8;l++)
+			{
+				if(pokemonCrush[l][c].getNum() == pokePrincipal)
+				{
+					pokemonCrush[l][c].setNum(0);
+					matchType++;
+					if(matchType == 4)
+					{
+						matchFour();
+					}
+				}
+				else 
+				{
+					l=9;
+				}
+			
+			}
+		}
+	}
+	if((pokePrincipal==menosAuxVerti1)&&(pokePrincipal==menosAuxVerti2))
+	{
+		would = pokePrincipal;
+		pokemonCrush[f][c].setNum(0);
+		pokemonCrush[f-1][c].setNum(0);
+		pokemonCrush[f-2][c].setNum(0);
+		if(f>=3)
+		{
+			l=f-3;
+			for(l;l>=0;l--)
+			{
+				if(pokemonCrush[l][c].getNum() == pokePrincipal)
+				{
+					pokemonCrush[l][c].setNum(0);
+					matchType++;
+					if(matchType == 4)
+					{
+						matchFour();
+					}
+				}
+				else 
+				{
+					l=-1;
+				}
+			
+			}
+		}
+	}
+
+	if((pokePrincipal==masAuxHoriz1)&&(pokePrincipal==menosAuxHoriz1))
+	{
+		would = pokePrincipal;
+		pokemonCrush[f][c].setNum(0);
+		pokemonCrush[f][c+1].setNum(0);
+		pokemonCrush[f][c-1].setNum(0);
+	}
+
+	if((pokePrincipal==masAuxVerti1)&&(pokePrincipal==menosAuxVerti1))
+	{
+		would = pokePrincipal;
+		pokemonCrush[f][c].setNum(0);
+		pokemonCrush[f+1][c].setNum(0);
+		pokemonCrush[f-1][c].setNum(0);
+	}
+	return would;
+}
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+void Tablero::quedanMov()
+{
+   for (int i=0;i<7;i++)
+   {
+      for (int j=0;j<7;j++)
+      {    
+          int aux1, aux2, aux3, aux4, aux5;
+          aux1=pokemonCrush[i][j].getNum();
+          aux2=pokemonCrush[i][j+2].getNum();
+          aux3=pokemonCrush[i][j+3].getNum();
+          if (j>=2)
+          {
+          aux4=pokemonCrush[i][j-2].getNum();
+          }
+          if (j>=3)
+          {
+          aux5=pokemonCrush[i][j-3].getNum();
+          }
+          if (aux1==aux2 && aux1==aux3)
+		  {
+			  cout <<"Aun hay movimientos posibles"<<endl;
+		  }
+		  if (aux1==aux4 && aux1==aux5)
+		  {
+			  cout <<"Aun hay movimientos posibles"<<endl;
+		  }
+		  if (aux1==aux2 && aux1==aux4)
+		  {
+			  cout <<"Aun hay movimientos posibles"<<endl;
+		  }
+	  }    
+   }
+	for (int j=0;j<8;j++)
+	{
+		for (int i=0;i<8;i++)
+		{    
+			int aux1, aux2, aux3, aux4, aux5;
+			aux1=pokemonCrush[i][j].getNum();
+			aux2=pokemonCrush[i+2][j].getNum();
+			aux3=pokemonCrush[i+3][j].getNum();
+			if (i>=2)
+			{
+				aux4=pokemonCrush[i-2][j].getNum();
+			}
+			if (i>=3)
+			{
+				aux5=pokemonCrush[i-3][j].getNum();
+			}
+			if (aux1==aux2 && aux1==aux3)
+			{
+				cout <<"Aun hay movimientos posibles"<<endl;
+			}
+			if (aux1==aux4 && aux1==aux5)
+			{
+				cout <<"Aun hay movimientos posibles"<<endl;
+			}
+			if (aux1==aux2 && aux1==aux4)
+			{
+				cout<<"Aun hay movimientos posibles"<<endl;
+			}
+          }              
+	}
+}
