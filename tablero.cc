@@ -43,7 +43,7 @@ Tablero::Tablero()
 			pokemonCrush[i][e].setCantBeFree();
 		}
 	}
- } 
+ }
 // pokemonCrush[j][k].setNum(5);
  //pokemonCrush[j][k].setMove();
  
@@ -81,32 +81,63 @@ void Tablero::liberarCaja()
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-
 void Tablero::validMove (int f,int c, int i, int e)//0 1 1 1
 {
 	int dir;
 	dir=0;
 	int aux1, aux2, aux3, aux4, aux5, au2, au3, au4, au5;
-		aux1=pokemonCrush[f][c].getNum(); // 		
-		aux2=pokemonCrush[i][e+1].getNum(); //  		
-		aux3=pokemonCrush[i][e+2].getNum(); //  		2
-		aux4=pokemonCrush[i][e-1].getNum(); //  		1
-		aux5=pokemonCrush[i][e-2].getNum(); //  		--
-		
-		au2=pokemonCrush[i+1][e].getNum(); //  2 1		2
-		au3=pokemonCrush[i+2][e].getNum(); //  3 1		3
-		au4=pokemonCrush[i-1][e].getNum(); //  0 1		1
-		au5=pokemonCrush[i-2][e].getNum(); //  -1 1	--
+		aux1=pokemonCrush[f][c].getNum(); //
+	if(e<7)
+	{
+		aux2=pokemonCrush[i][e+1].getNum();
+		if(e<6)
+		{
+			aux3=pokemonCrush[i][e+2].getNum();
+		}
+	}  		
+
+	if(e>0)
+	{
+		aux4=pokemonCrush[i][e-1].getNum();
+		if(e>1)
+		{
+			aux5=pokemonCrush[i][e-2].getNum();
+		}
+	}  		
+		 
+	if(i<7)
+	{
+		au2=pokemonCrush[i+1][e].getNum();
+		if(i<6)
+		{
+			au3=pokemonCrush[i+2][e].getNum();
+		}
+	}
+	
+	if(i>0)
+	{
+		au4=pokemonCrush[i-1][e].getNum();
+		if(i>1)
+		{
+			au5=pokemonCrush[i-2][e].getNum();
+		}
+	}
+		 //  2 1		2
+		 //  3 1		3
+		 //  0 1		1
+		 //  -1 1	--
+	
 	if (((aux1==aux2)&&(aux1==aux3))||((aux1==aux4)&&(aux1==aux5))||((aux1==aux2)&&(aux1==aux4)))
 	{
 		//Mover caja horizontal
-		movCaja(f,c,i,e, 2);
+		movCaja(f,c,i,e);
+		
 	}
 	
 	if (((aux1==au2)&&(aux1==au3))||((aux1==au4)&&(aux1==au5))||((aux1==au2)&&(aux1==au4)))
 	{
 		//Move caja vertical
-		movCaja(f,c,i,e, 1);
+		movCaja(f,c,i,e);
 	}
 }
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -434,4 +465,62 @@ void Tablero::drawmatrix()
 		cout << endl;
 	}
 	cout <<endl;
+}
+void Tablero::escribirArchivo(){
+	ofstream archivo("save.dat",ios::out);
+	int level=0;
+	int time=0;
+	int pok1=0;
+	int pok2=0;
+	int pok3=0;
+	int pok4=0;
+	int pok5=0;
+	int linea=0;
+	string nombre[7]={"Level","Time","Pokemon1","Pokemon2","Pokemon3","Pokemon4","Pokemon5"};   
+	int contenido[7]={level,time,pok1,pok2,pok3,pok4,pok5}; 
+	if (!archivo){
+		cout<<"no se pudo abrir el archivo"<<endl;       
+	}
+	else{
+		for(int z=0;z<=6;z++){
+			linea=linea+1;
+			archivo<<linea<<' '<<nombre[z]<<' '<<contenido[z]<<endl;
+		}
+		linea=7;
+		for(int i=0;i<=7;i++){
+			linea=linea+1;
+			archivo<<linea<<' ';
+			for(int a=0;a<=7;a++){
+				archivo<<pokemonCrush[i][a].getNum()<<' ';
+			}
+			archivo<<endl;
+		}
+	}
+}
+void Tablero::leerArchivo() {     
+	ifstream archivo("save.dat",ios::in); //el archivo se abre para lectura   
+	if (!archivo){ 
+	    cerr<<"Error, archivo no encontrado!!"<<endl;
+		}    
+	else{
+		int b;
+		int linea;
+		string snombre[7];
+		int scontenido[7];
+		for(int z=0;z<=6;z++){
+			archivo>>linea>>snombre[z]>>scontenido[z];
+			cout<<linea<<" "<<snombre[z]<<" "<<scontenido[z]<<endl;
+		}  
+        for(int i=0;i<=7;i++){
+          	archivo>>linea;
+          	cout<<linea<<" ";
+			for(int a=0;a<=7;a++){
+				archivo>>b;
+				cout<<b<<" ";
+				pokemonCrush[i][a].setNum(b);
+			}
+			cout<<endl;
+		  }
+	}
+	archivo.close();
 }
